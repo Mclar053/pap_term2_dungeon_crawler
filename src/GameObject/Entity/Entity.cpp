@@ -63,7 +63,8 @@ void Entity::move(){
     vel.x=friction(vel.x); //Friction in the x direction
     vel.y=friction(vel.y); //Friction in the y direction
     normaliseMaxSpeed(); //Speed control so entity doesn't move over Max velocity (MAX_VEL)
-    if(!edgeDetect()){
+    
+    if(!edgeDetect()){ //Checks if player has hit room edge
         pos += vel; //Add velocity to position
     }
 }
@@ -89,7 +90,7 @@ void Entity::normaliseMaxSpeed(){
 }
 
 bool Entity::edgeDetect(){
-    if(pos.x+vel.x-size.x/2<50 || pos.x+vel.x+size.x/2>750 || pos.y+vel.y-size.y/2<150 || pos.y+vel.y+size.y/2>600){
+    if(pos.x+vel.x-getSize().x/2<48 || pos.x+vel.x+getSize().x/2>752 || pos.y+vel.y-getSize().y/2<148 || pos.y+vel.y+getSize().y/2>602){
         return true;
     }
     return false;

@@ -4,8 +4,6 @@
 #include "Floormaker.h"
 #include "Floor/Floor.h"
 #include "Room/Room.h"
-//#include "GameObject/GameObject.h"
-//#include "GameObject/Entity/Entity.h"
 #include "GameObject/Entity/Player/Player.h"
 
 class ofApp : public ofBaseApp{

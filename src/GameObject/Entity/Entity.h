@@ -51,6 +51,9 @@ public:
     //Checks if entity is moving
     bool checkMoving();
     
+    //Returns velocity of Entity
+    ofVec2f getVel();
+    
     //Collisions
     bool edgeDetect();
     

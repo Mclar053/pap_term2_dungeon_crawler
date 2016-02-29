@@ -15,6 +15,7 @@ Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,floorNum){
     generateFloor();
     spawnRoom = findSpawn();
     currentRoom = spawnRoom;
+    currentGridPos = findSpawnGridPos();
 }
 
 void Floor::generateFloor(){
@@ -25,7 +26,13 @@ void Floor::generateFloor(){
                 case 3:
                     rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
-                case 4:
+                case 5:
+                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                    break;
+                case 6:
+                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                    break;
+                case 7:
                     rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
                 case 9:
@@ -45,29 +52,61 @@ int Floor::findSpawn(){
     return 0;
 }
 
+GridPos Floor::findSpawnGridPos(){
+    for(int i=0; i<grid[0].size(); i++)
+        for(int j=0; j<grid.size(); j++){
+            if(grid[j][i]==9)
+                return GridPos(j,i);
+        }
+    return GridPos(0,0);
+}
+
 vector<bool> Floor::checkAdjacencies(int _i, int _j){
     vector<bool> _adjacent;
     if(_j-1>=0){
-        if(grid[_j-1][_i]!=0) _adjacent.push_back(true); else _adjacent.push_back(false);
-    } else _adjacent.push_back(false);
+        if(grid[_j-1][_i]!=0) _adjacent.push_back(true);
+        else {_adjacent.push_back(false);}
+    }
+    else {_adjacent.push_back(false);}
     
-    if(_i-1>=0){
-        if(grid[_j][_i+1]!=0) _adjacent.push_back(true); else _adjacent.push_back(false);
-    } else _adjacent.push_back(false);
+    if(_i+1>=0){
+        if(grid[_j][_i+1]!=0) _adjacent.push_back(true);
+        else{ _adjacent.push_back(false);}
+    }
+    else {_adjacent.push_back(false);}
         
     if(_j+1<grid.size()){
-        if(grid[_j+1][_i]!=0) _adjacent.push_back(true); else _adjacent.push_back(false);
-    } else _adjacent.push_back(false);
+        if(grid[_j+1][_i]!=0) _adjacent.push_back(true);
+        else{ _adjacent.push_back(false);}
+    }
+    else {_adjacent.push_back(false);}
     
-    if(_i+1<grid[0].size()){
-        if(grid[_j][_i-1]!=0) _adjacent.push_back(true); else _adjacent.push_back(false);
-    } else _adjacent.push_back(false);
+    if(_i-1<grid[0].size()){
+        if(grid[_j][_i-1]!=0) _adjacent.push_back(true);
+        else{ _adjacent.push_back(false);}
+    }
+    else{ _adjacent.push_back(false);}
     
     return _adjacent;
 }
 
 Room* Floor::getRoom(){
     return rooms[currentRoom];
+}
+
+void Floor::moveRoom(GridPos _pos){
+    for(auto _r : rooms){
+        cout<<_r->getFloorPos().x<<" "<<_r->getFloorPos().y<<endl;
+        for(auto ra : _r->getA()) cout<<ra<<endl;
+    }
+    cout<<"Old: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
+    currentGridPos.add(_pos);
+    cout<<"Current: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
+    for(int i=0; i<rooms.size(); i++){
+        if(rooms[i]->getFloorPos().isEqual(currentGridPos)){
+            currentRoom=i;
+        }
+    }
 }
 
 vector<vector<int>> Floor::getGrid(){

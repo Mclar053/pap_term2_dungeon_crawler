@@ -23,6 +23,13 @@ void GameObject::display(){
 }
 
 //Gets size of gamesprite and sets the size to gamesprites current size
-void GameObject::getSize(){
-    size.set(gameSprite.getSize());
+ofVec2f GameObject::getSize(){
+    return gameSprite.getSize();
+}
+ofVec2f GameObject::getPos(){
+    return pos;
+}
+
+void GameObject::setPos(ofVec2f _pos){
+    pos.set(_pos);
 }

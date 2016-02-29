@@ -15,6 +15,7 @@
 //#include "Enemy.h"
 #include "GridPos.h"
 #include "ofMain.h"
+#include "../GameObject/Entity/Player/Player.h"
 #include "../GameObject/Door/Door.hpp"
 
 using namespace std;
@@ -37,6 +38,11 @@ public:
     void generateRoom();
     bool checkEmpty();
     virtual void display();
+    void playerDoorCollision(Player& _player);
+    vector<Door*> getDoors();
+    GridPos getFloorPos();
+    
+    vector<bool> getA();
     
     virtual ~Room(){};
     

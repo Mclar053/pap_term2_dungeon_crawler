@@ -13,7 +13,7 @@ Player::Player():Entity(ofVec2f(200,200)){
     getSize();
 }
 
-Player::Player(ofVec2f _pos):Entity(_pos,1.5){
+Player::Player(ofVec2f _pos):Entity(_pos,3){
     gameSprite = Sprite("player", 16, 0, 7, 0, 7, 8, 15);
     getSize();
 }

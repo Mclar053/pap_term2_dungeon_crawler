@@ -25,6 +25,7 @@ class Floor{
     int floorNum;
     int currentRoom;
     int spawnRoom;
+    GridPos currentGridPos;
     
 public:
     Floor();
@@ -33,6 +34,8 @@ public:
     void nextFloor();
     Room* getRoom();
     int findSpawn();
+    void moveRoom(GridPos _pos);
+    GridPos findSpawnGridPos();
     
     vector<vector<int>> getGrid();
     

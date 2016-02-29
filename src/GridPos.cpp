@@ -19,3 +19,9 @@ void GridPos::set(int _x, int _y){
     x=_x;
     y=_y;
 }
+
+bool GridPos::isEqual(GridPos _gridpos){
+    if(_gridpos.x==x && _gridpos.y==y)
+        return true;
+    return false;
+}

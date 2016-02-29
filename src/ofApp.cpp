@@ -12,6 +12,34 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     ent.move();
+    vector<Door*> doors = currentRoom->getDoors();
+    for(auto &_door: doors){
+        if(_door->detectLeft(ent)){
+            ent.setPos(ofVec2f(150,375));
+            floor.moveRoom(GridPos(0,1));
+            currentRoom = floor.getRoom();
+            cout<<"left"<<endl;
+        }
+        if(_door->detectRight(ent)){
+            ent.setPos(ofVec2f(650,375));
+            floor.moveRoom(GridPos(0,-1));
+            currentRoom = floor.getRoom();
+            cout<<"right"<<endl;
+        }
+        if(_door->detectTop(ent)){
+            ent.setPos(ofVec2f(400,250));
+            floor.moveRoom(GridPos(1,0));
+            currentRoom = floor.getRoom();
+            cout<<"top"<<endl;
+        }
+        if(_door->detectBottom(ent)){
+            ent.setPos(ofVec2f(400,550));
+            floor.moveRoom(GridPos(-1,0));
+            currentRoom = floor.getRoom();
+            cout<<"bottom"<<endl;
+        }
+    }
+//    cout<<currentRoom->getFloorPos().x<<" "<<currentRoom->getFloorPos().y<<endl;
 }
 
 //--------------------------------------------------------------

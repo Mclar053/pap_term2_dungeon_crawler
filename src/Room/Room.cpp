@@ -64,3 +64,15 @@ void Room::generateRoom(){
         }
     }
 }
+
+vector<bool> Room::getA(){
+    return roomAdjacency;
+}
+
+vector<Door*> Room::getDoors(){
+    return doors;
+}
+
+GridPos Room::getFloorPos(){
+    return floorPos;
+}
