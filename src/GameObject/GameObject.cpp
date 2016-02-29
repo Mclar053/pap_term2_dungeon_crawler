@@ -26,5 +26,5 @@ void GameObject::display(){
 
 //Gets size of gamesprite and sets the size to gamesprites current size
 void GameObject::getSize(){
-//    size.set(gameSprite.getSize());
+    size.set(gameSprite.getSize());
 }

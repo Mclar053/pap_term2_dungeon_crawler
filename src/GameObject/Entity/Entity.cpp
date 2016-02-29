@@ -63,7 +63,9 @@ void Entity::move(){
     vel.x=friction(vel.x); //Friction in the x direction
     vel.y=friction(vel.y); //Friction in the y direction
     normaliseMaxSpeed(); //Speed control so entity doesn't move over Max velocity (MAX_VEL)
-    pos += vel; //Add velocity to position
+    if(!edgeDetect()){
+        pos += vel; //Add velocity to position
+    }
 }
 
 float Entity::friction(float _vel){
@@ -84,6 +86,13 @@ void Entity::normaliseMaxSpeed(){
         vel.x = speedControl(ratio.x);
         vel.y = speedControl(ratio.y);
     }
+}
+
+bool Entity::edgeDetect(){
+    if(pos.x+vel.x-size.x/2<50 || pos.x+vel.x+size.x/2>750 || pos.y+vel.y-size.y/2<150 || pos.y+vel.y+size.y/2>600){
+        return true;
+    }
+    return false;
 }
 
 void Entity::moveLeft(){

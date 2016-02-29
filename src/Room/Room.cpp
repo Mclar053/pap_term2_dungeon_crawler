@@ -28,7 +28,7 @@ void Room::display(){
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
             glPushMatrix();
-            glTranslated(25+i*25,125+j*25, 0);
+            glTranslated(50+i*25,150+j*25, 0);
             ofPushStyle();
             ofSetColor(255, 0, 0);
             ofDrawRectangle(0,0,25,25);

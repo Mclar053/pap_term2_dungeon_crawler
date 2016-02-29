@@ -51,6 +51,9 @@ public:
     //Checks if entity is moving
     bool checkMoving();
     
+    //Collisions
+    bool edgeDetect();
+    
     /*Features*/
     void wallWrap(); //Allows entities to move to other side of screen
     bool checkWallX(); //Checks between x<0 and x>width

@@ -5,6 +5,8 @@ void ofApp::setup(){
     
 //    floor = Floor();
     currentRoom = floor.getRoom();
+    grid = floor.getGrid();
+    size = 10;
 }
 
 //--------------------------------------------------------------
@@ -17,7 +19,9 @@ void ofApp::draw(){
 //    ofBackground(255);
     currentRoom->display();
     ent.display();
-    /**
+    //**
+    glPushMatrix();
+    glTranslated(20, 20, 0);
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
             switch (grid[j][i]) {
@@ -67,6 +71,7 @@ void ofApp::draw(){
             }
         }
     }
+    glPopMatrix();
 //     **/
 }
 
@@ -122,42 +127,6 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
-
-/**
-/*
- * loads a new level
-
-void ofApp::loadImages(){
-    
-    // clear all of the object
-    // and the image manager
-    // (deletes all of the pointers)
-    ImageManager::get().reset();
-    
-    // get all of the .png images in the
-    // directory
-    ofDirectory dir(ofToDataPath( "player"));
-    //only show png files
-    dir.allowExt("png");
-    //populate the directory object
-    dir.listDir();
-    
-    //go through and add each image to the image manager
-    for(int i = 0; i < dir.size(); i++){
-        ImageManager::get().add(dir.getPath(i));
-    }
-    
-    // load a level definition file (very simple format)
-//    std::ifstream levelFile(ofToDataPath( "player" ) + "/" + levelName + ".tsv");
-//    string name;
-//    float x, y;
-//    // load image name and position from the file
-//    // and use them to create a new object
-//    while(levelFile >> name >> x >> y){
-//        objects.push_back(GameObject(name, x, y));
-//    }
-};
-**/
 
 
 

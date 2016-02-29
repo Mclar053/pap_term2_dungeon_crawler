@@ -14,6 +14,7 @@ Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,floorNum){
     grid = fm.getGrid();
     generateFloor();
     spawnRoom = findSpawn();
+    currentRoom = spawnRoom;
 }
 
 void Floor::generateFloor(){
@@ -27,8 +28,7 @@ void Floor::generateFloor(){
                     rooms.push_back(new Room(true,GridPos(0,0),true,true,true,true));
                     break;
                 case 9:
-                    currentRoom = rooms.size()-1;
-                    rooms.push_back(new Room(false,GridPos(0,0),true,true,true,true));
+                    rooms.push_back(new SpawnRoom(false,GridPos(0,0),true,true,true,true));
                     break;
             }
         }
@@ -37,11 +37,17 @@ void Floor::generateFloor(){
 
 int Floor::findSpawn(){
     for(int i=0; i<rooms.size(); i++){
-        if()
+        if(SpawnRoom* derived = dynamic_cast<SpawnRoom*> (rooms[i])){
+            return i;
+        }
     }
     return 0;
 }
 
 Room* Floor::getRoom(){
     return rooms[currentRoom];
+}
+
+vector<vector<int>> Floor::getGrid(){
+    return grid;
 }

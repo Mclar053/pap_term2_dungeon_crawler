@@ -19,6 +19,7 @@
 using namespace std;
 
 class Room{
+protected:
     int sizeX, sizeY;
     GridPos floorPos;
     vector<vector<int>> grid;

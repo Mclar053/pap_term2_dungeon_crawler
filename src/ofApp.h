@@ -14,8 +14,6 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-    
-    void loadImages();
 
 		void keyPressed(int key);
 		void keyReleased(int key);

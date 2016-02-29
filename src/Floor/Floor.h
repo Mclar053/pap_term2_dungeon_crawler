@@ -13,6 +13,10 @@
 
 #include "../Floormaker.h"
 #include "../Room/Room.h"
+#include "../Room/SpawnRoom/SpawnRoom.h"
+#include "../Room/NormalRoom/NormalRoom.h"
+#include "../Room/ShopRoom/ShopRoom.h"
+#include "../Room/ItemRoom/ItemRoom.h"
 
 class Floor{
     vector<Room*> rooms;
@@ -20,7 +24,7 @@ class Floor{
     Floormaker fm;
     int floorNum;
     int currentRoom;
-    GridPos spawnRoom;
+    int spawnRoom;
     
 public:
     Floor();
@@ -28,7 +32,9 @@ public:
     void generateFloor();
     void nextFloor();
     Room* getRoom();
-    GridPos findSpawn();
+    int findSpawn();
+    
+    vector<vector<int>> getGrid();
     
 };
 
