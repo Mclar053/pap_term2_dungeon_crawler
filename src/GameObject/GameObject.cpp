@@ -8,12 +8,10 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(){
-    
-}
+GameObject::GameObject(){}
 
-GameObject::GameObject(ofVec2f _pos){
-    pos = _pos;
+GameObject::GameObject(ofVec2f _pos):pos(_pos){
+
 }
 
 //Displays the gamesprite and places the sprite into the correct position on the screen

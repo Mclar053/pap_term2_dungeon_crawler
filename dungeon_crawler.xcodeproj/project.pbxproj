@@ -17,6 +17,7 @@
 		6E41FD5E1C594A6500339344 /* Floormaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E41FD5C1C594A6500339344 /* Floormaker.cpp */; };
 		6E41FD611C594A6F00339344 /* GridPos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E41FD5F1C594A6F00339344 /* GridPos.cpp */; };
 		6E4C7C4E1C84A09200B4B7D8 /* SpawnRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E4C7C4C1C84A09200B4B7D8 /* SpawnRoom.cpp */; };
+		6E95FC9B1C84D1BF003F8E4B /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E95FC991C84D1BF003F8E4B /* Door.cpp */; };
 		6E9664A81C7376B9007FC13B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E9664A61C7376B9007FC13B /* GameObject.cpp */; };
 		6E9664AC1C7376DF007FC13B /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E9664AA1C7376DF007FC13B /* Entity.cpp */; };
 		6EA7A5141C61084B00F9B303 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7A5121C61084B00F9B303 /* Sprite.cpp */; };
@@ -75,6 +76,8 @@
 		6E41FD601C594A6F00339344 /* GridPos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPos.h; sourceTree = "<group>"; };
 		6E4C7C4C1C84A09200B4B7D8 /* SpawnRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpawnRoom.cpp; path = Room/SpawnRoom/SpawnRoom.cpp; sourceTree = "<group>"; };
 		6E4C7C4D1C84A09200B4B7D8 /* SpawnRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpawnRoom.h; path = Room/SpawnRoom/SpawnRoom.h; sourceTree = "<group>"; };
+		6E95FC991C84D1BF003F8E4B /* Door.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Door.cpp; path = GameObject/Door/Door.cpp; sourceTree = "<group>"; };
+		6E95FC9A1C84D1BF003F8E4B /* Door.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Door.hpp; path = GameObject/Door/Door.hpp; sourceTree = "<group>"; };
 		6E9664A61C7376B9007FC13B /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = GameObject/GameObject.cpp; sourceTree = "<group>"; };
 		6E9664A71C7376B9007FC13B /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = GameObject/GameObject.h; sourceTree = "<group>"; };
 		6E9664AA1C7376DF007FC13B /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Entity.cpp; path = GameObject/Entity/Entity.cpp; sourceTree = "<group>"; };
@@ -164,9 +167,19 @@
 			name = Spawn;
 			sourceTree = "<group>";
 		};
+		6E4C7C511C84C31A00B4B7D8 /* Door */ = {
+			isa = PBXGroup;
+			children = (
+				6E95FC991C84D1BF003F8E4B /* Door.cpp */,
+				6E95FC9A1C84D1BF003F8E4B /* Door.hpp */,
+			);
+			name = Door;
+			sourceTree = "<group>";
+		};
 		6E9664A51C7376A2007FC13B /* GameObject */ = {
 			isa = PBXGroup;
 			children = (
+				6E4C7C511C84C31A00B4B7D8 /* Door */,
 				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
 				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6E9664A91C7376D0007FC13B /* Entity */,
@@ -379,6 +392,7 @@
 				6E3484671C66666900EDB649 /* Room.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				6E3484641C66665900EDB649 /* Floor.cpp in Sources */,
+				6E95FC9B1C84D1BF003F8E4B /* Door.cpp in Sources */,
 				6EA7A5141C61084B00F9B303 /* Sprite.cpp in Sources */,
 				6E04F9681C7F21A800D24389 /* Player.cpp in Sources */,
 			);
