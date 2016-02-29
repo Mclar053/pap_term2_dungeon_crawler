@@ -28,7 +28,7 @@ class Floor{
     
 public:
     Floor();
-    
+    vector<bool> checkAdjacencies(int _i, int _j);
     void generateFloor();
     void nextFloor();
     Room* getRoom();

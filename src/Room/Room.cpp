@@ -8,7 +8,7 @@
 
 #include "Room.h"
 
-Room::Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):fighting(_fight),sizeX(28),sizeY(18),floorPos(_fPos){
+Room::Room(bool _fight, GridPos _fPos ,bool _up,bool _right, bool _down, bool _left):fighting(_fight),sizeX(28),sizeY(18),floorPos(_fPos){
     grid.resize(sizeY);
     for(auto &_y: grid) _y.resize(sizeX);
     

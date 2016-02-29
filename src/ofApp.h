@@ -27,7 +27,6 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-//        Floormaker fm;
         Floor floor;
         Room* currentRoom;
         vector<vector<int>> grid, grid2;
