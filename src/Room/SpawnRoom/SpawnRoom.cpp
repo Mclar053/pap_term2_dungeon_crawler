@@ -28,4 +28,7 @@ void SpawnRoom::display(){
             glPopMatrix();
         }
     }
+    for(auto _door: doors){
+        _door->display();
+    }
 }

@@ -36,7 +36,7 @@ void Room::display(){
             glPopMatrix();
         }
     }
-    for(auto &_door: doors){
+    for(auto _door: doors){
         _door->display();
     }
 }
@@ -44,8 +44,23 @@ void Room::display(){
 void Room::generateRoom(){
     //Creates rooms clockwise from up to left
     for(int i=0; i<roomAdjacency.size(); i++){
+        ofVec2f _pos;
         if(roomAdjacency[i]){
-            doors.push_back(new Door(ofVec2f(0,0),i));
+            switch(i){
+                case 1:
+                    _pos = ofVec2f(775,375);
+                    break;
+                case 2:
+                    _pos = ofVec2f(400,625);
+                    break;
+                case 3:
+                    _pos = ofVec2f(25,375);
+                    break;
+                default:
+                    _pos = ofVec2f(400,125);
+                    break;
+            }
+            doors.push_back(new Door(_pos,i));
         }
     }
 }

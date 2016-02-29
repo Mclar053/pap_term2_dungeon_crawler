@@ -15,7 +15,7 @@
 //#include "Enemy.h"
 #include "GridPos.h"
 #include "ofMain.h"
-#include "../GameObject/Door/Door.cpp"
+#include "../GameObject/Door/Door.hpp"
 
 using namespace std;
 

@@ -10,12 +10,13 @@
 
 Door::Door(ofVec2f _pos, int _direction):GameObject(_pos){
     gameSprite = Sprite("door");
+    calcRotation(_direction);
 }
 
 void Door::display(){
     ofPushMatrix();
         ofTranslate(pos.x, pos.y);
-        ofRotate(rotation, 0, 0, 0);
+        ofRotate(rotation);
         gameSprite.display();
     ofPopMatrix();
 }
