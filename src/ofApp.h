@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Floormaker.h"
 #include "Floor/Floor.h"
+#include "Room/Room.h"
 //#include "GameObject/GameObject.h"
 //#include "GameObject/Entity/Entity.h"
 #include "GameObject/Entity/Player/Player.h"
@@ -30,10 +31,11 @@ class ofApp : public ofBaseApp{
 		
 //        Floormaker fm;
         Floor floor;
+        Room* currentRoom;
         vector<vector<int>> grid, grid2;
         int lvl;
         int size;
-//        Player ent = Player(ofVec2f(300,300));
+        Player ent = Player(ofVec2f(300,300));
     
 
     

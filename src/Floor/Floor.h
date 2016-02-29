@@ -19,12 +19,16 @@ class Floor{
     vector<vector<int>> grid;
     Floormaker fm;
     int floorNum;
+    int currentRoom;
+    GridPos spawnRoom;
     
 public:
     Floor();
     
     void generateFloor();
     void nextFloor();
+    Room* getRoom();
+    GridPos findSpawn();
     
 };
 

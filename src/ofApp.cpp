@@ -2,19 +2,21 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    lvl = 1;
-//    floor = Floor();
     
+//    floor = Floor();
+    currentRoom = floor.getRoom();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    ent.move();
+    ent.move();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//    ent.display();
+//    ofBackground(255);
+    currentRoom->display();
+    ent.display();
     /**
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
@@ -70,34 +72,34 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-//    if(key==OF_KEY_LEFT){
-//        ent.moveLeft();
-//    }
-//    if(key==OF_KEY_RIGHT){
-//        ent.moveRight();
-//    }
-//    if(key==OF_KEY_UP){
-//        ent.moveUp();
-//    }
-//    if(key==OF_KEY_DOWN){
-//        ent.moveDown();
-//    }
+    if(key==OF_KEY_LEFT){
+        ent.moveLeft();
+    }
+    if(key==OF_KEY_RIGHT){
+        ent.moveRight();
+    }
+    if(key==OF_KEY_UP){
+        ent.moveUp();
+    }
+    if(key==OF_KEY_DOWN){
+        ent.moveDown();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-//    if(key==OF_KEY_LEFT){
-//        ent.stopLeft();
-//    }
-//    if(key==OF_KEY_RIGHT){
-//        ent.stopRight();
-//    }
-//    if(key==OF_KEY_UP){
-//        ent.stopUp();
-//    }
-//    if(key==OF_KEY_DOWN){
-//        ent.stopDown();
-//    }
+    if(key==OF_KEY_LEFT){
+        ent.stopLeft();
+    }
+    if(key==OF_KEY_RIGHT){
+        ent.stopRight();
+    }
+    if(key==OF_KEY_UP){
+        ent.stopUp();
+    }
+    if(key==OF_KEY_DOWN){
+        ent.stopDown();
+    }
 }
 
 //--------------------------------------------------------------

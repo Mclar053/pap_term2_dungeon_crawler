@@ -14,6 +14,7 @@
 
 //#include "Enemy.h"
 #include "GridPos.h"
+#include "ofMain.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ public:
     bool checkEmpty();
     virtual void display();
     
-    virtual ~Room();
+    virtual ~Room(){};
     
 };
 

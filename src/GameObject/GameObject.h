@@ -16,6 +16,11 @@
 //Abstract class
 class GameObject{
     
+protected:
+    Sprite gameSprite;
+    ofVec2f pos;
+    ofVec2f size;
+    
 public:
     GameObject();
     GameObject(ofVec2f _pos);
@@ -23,10 +28,8 @@ public:
     virtual void display() =0; //Virtual to allow other child classes to overwrite it. Pure virtual function.
     void getSize(); //Gets size of the gameSprite
     
-    //Properties
-    Sprite gameSprite;
-    ofVec2f pos;
-    ofVec2f size;
+    virtual ~GameObject(){};
+    
     
 };
 
