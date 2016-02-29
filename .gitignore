@@ -1,0 +1,4 @@
+bin/
+bin/*
+obj/
+.ycm_extra_conf.py

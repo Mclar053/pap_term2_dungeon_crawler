@@ -1,0 +1,41 @@
+//
+//  Room.h
+//  dungeon_crawler
+//
+//  Created by Matthew Clark on 06/02/2016.
+//
+//
+
+#ifndef __dungeon_crawler__Room__
+#define __dungeon_crawler__Room__
+
+#include <stdio.h>
+#include <vector>
+
+//#include "Enemy.h"
+#include "GridPos.h"
+
+using namespace std;
+
+class Room{
+    int sizeX, sizeY;
+    GridPos floorPos;
+    vector<vector<int>> grid;
+    vector<bool> roomAdjacency;
+//    vector<Enemy> entities;
+    
+    bool fighting;
+    
+public:
+    Room(bool _fight);
+    Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
+    
+    void generateRoom();
+    bool checkEmpty();
+    virtual void display();
+    
+    virtual ~Room();
+    
+};
+
+#endif /* defined(__dungeon_crawler__Room__) */
