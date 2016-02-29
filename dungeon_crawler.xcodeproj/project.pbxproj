@@ -179,7 +179,6 @@
 		6E9664A51C7376A2007FC13B /* GameObject */ = {
 			isa = PBXGroup;
 			children = (
-				6E4C7C511C84C31A00B4B7D8 /* Door */,
 				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
 				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6E9664A91C7376D0007FC13B /* Entity */,
@@ -192,6 +191,7 @@
 			children = (
 				6E9664AA1C7376DF007FC13B /* Entity.cpp */,
 				6E9664AB1C7376DF007FC13B /* Entity.h */,
+				6E4C7C511C84C31A00B4B7D8 /* Door */,
 				6E04F9651C7F219A00D24389 /* Player */,
 			);
 			name = Entity;

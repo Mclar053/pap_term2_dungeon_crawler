@@ -12,10 +12,10 @@ Room::Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _d
     grid.resize(sizeY);
     for(auto &_y: grid) _y.resize(sizeX);
     
-    roomAdjacency.push_back(_left);
     roomAdjacency.push_back(_up);
     roomAdjacency.push_back(_right);
     roomAdjacency.push_back(_down);
+    roomAdjacency.push_back(_left);
     
     generateRoom();
 }
@@ -36,8 +36,16 @@ void Room::display(){
             glPopMatrix();
         }
     }
+    for(auto &_door: doors){
+        _door->display();
+    }
 }
 
 void Room::generateRoom(){
-    
+    //Creates rooms clockwise from up to left
+    for(int i=0; i<roomAdjacency.size(); i++){
+        if(roomAdjacency[i]){
+            doors.push_back(new Door(ofVec2f(0,0),i));
+        }
+    }
 }

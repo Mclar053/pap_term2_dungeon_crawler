@@ -15,6 +15,7 @@
 //#include "Enemy.h"
 #include "GridPos.h"
 #include "ofMain.h"
+#include "../GameObject/Door/Door.cpp"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ protected:
     GridPos floorPos;
     vector<vector<int>> grid;
     vector<bool> roomAdjacency;
+    vector<Door*> doors;
 //    vector<Enemy> entities;
     
     bool fighting;

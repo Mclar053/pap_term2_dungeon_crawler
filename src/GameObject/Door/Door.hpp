@@ -13,9 +13,12 @@
 #include "../GameObject.h"
 
 class Door: public GameObject{
+    float rotation;
     
 public:
-    Door();
+    Door(ofVec2f _pos, int _direction);
+    void calcRotation(int _dir);
+    void display();
 };
 
 #endif /* Door_hpp */
