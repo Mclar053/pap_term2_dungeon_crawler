@@ -2,40 +2,41 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    
-//    floor = Floor();
-    currentRoom = floor.getRoom();
-    grid = floor.getGrid();
+    loadImages();
+    ent = new Player(ofVec2f(300,300));
+    floor = new Floor();
+    currentRoom = floor->getRoom();
+    grid = floor->getGrid();
     size = 10;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ent.move();
+    ent->move();
     vector<Door*> doors = currentRoom->getDoors();
     for(auto &_door: doors){
-        if(_door->detectLeft(ent)){
-            ent.setPos(ofVec2f(150,375));
-            floor.moveRoom(GridPos(0,1));
-            currentRoom = floor.getRoom();
+        if(_door->detectLeft(*ent)){
+            ent->setPos(ofVec2f(150,375));
+            floor->moveRoom(GridPos(0,1));
+            currentRoom = floor->getRoom();
             cout<<"left"<<endl;
         }
-        if(_door->detectRight(ent)){
-            ent.setPos(ofVec2f(650,375));
-            floor.moveRoom(GridPos(0,-1));
-            currentRoom = floor.getRoom();
+        if(_door->detectRight(*ent)){
+            ent->setPos(ofVec2f(650,375));
+            floor->moveRoom(GridPos(0,-1));
+            currentRoom = floor->getRoom();
             cout<<"right"<<endl;
         }
-        if(_door->detectTop(ent)){
-            ent.setPos(ofVec2f(400,250));
-            floor.moveRoom(GridPos(1,0));
-            currentRoom = floor.getRoom();
+        if(_door->detectTop(*ent)){
+            ent->setPos(ofVec2f(400,250));
+            floor->moveRoom(GridPos(1,0));
+            currentRoom = floor->getRoom();
             cout<<"top"<<endl;
         }
-        if(_door->detectBottom(ent)){
-            ent.setPos(ofVec2f(400,550));
-            floor.moveRoom(GridPos(-1,0));
-            currentRoom = floor.getRoom();
+        if(_door->detectBottom(*ent)){
+            ent->setPos(ofVec2f(400,550));
+            floor->moveRoom(GridPos(-1,0));
+            currentRoom = floor->getRoom();
             cout<<"bottom"<<endl;
         }
     }
@@ -46,7 +47,7 @@ void ofApp::update(){
 void ofApp::draw(){
 //    ofBackground(255);
     currentRoom->display();
-    ent.display();
+    ent->display();
     //**
     glPushMatrix();
     glTranslated(20, 20, 0);
@@ -106,32 +107,32 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key==OF_KEY_LEFT){
-        ent.moveLeft();
+        ent->moveLeft();
     }
     if(key==OF_KEY_RIGHT){
-        ent.moveRight();
+        ent->moveRight();
     }
     if(key==OF_KEY_UP){
-        ent.moveUp();
+        ent->moveUp();
     }
     if(key==OF_KEY_DOWN){
-        ent.moveDown();
+        ent->moveDown();
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     if(key==OF_KEY_LEFT){
-        ent.stopLeft();
+        ent->stopLeft();
     }
     if(key==OF_KEY_RIGHT){
-        ent.stopRight();
+        ent->stopRight();
     }
     if(key==OF_KEY_UP){
-        ent.stopUp();
+        ent->stopUp();
     }
     if(key==OF_KEY_DOWN){
-        ent.stopDown();
+        ent->stopDown();
     }
 }
 
@@ -155,6 +156,40 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
+ /*
+ * loads a new level
+ */
+ void ofApp::loadImages(){
+ 
+ // clear all of the object
+ // and the image manager
+ // (deletes all of the pointers)
+ ImageManager::get().reset();
+ 
+ // get all of the .png images in the
+ // directory
+ ofDirectory dir(ofToDataPath("allImages"));
+ //only show png files
+ dir.allowExt("png");
+ //populate the directory object
+ dir.listDir();
+ 
+ //go through and add each image to the image manager
+ for(int i = 0; i < dir.size(); i++){
+     cout<<dir.getPath(i)<<endl;
+ ImageManager::get().add(dir.getPath(i));
+ }
+ 
+ // load a level definition file (very simple format)
+ //    std::ifstream levelFile(ofToDataPath( "player" ) + "/" + levelName + ".tsv");
+ //    string name;
+ //    float x, y;
+ //    // load image name and position from the file
+ //    // and use them to create a new object
+ //    while(levelFile >> name >> x >> y){
+ //        objects.push_back(GameObject(name, x, y));
+ //    }
+ };
 
 
 

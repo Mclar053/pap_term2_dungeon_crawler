@@ -22,7 +22,7 @@ void SpawnRoom::display(){
             glPushMatrix();
             glTranslated(50+i*25,150+j*25, 0);
             ofPushStyle();
-            ofSetColor(0, 255, 0);
+            ofSetColor(0, 255, 0); //Green
             ofDrawRectangle(0,0,25,25);
             ofPopStyle();
             glPopMatrix();

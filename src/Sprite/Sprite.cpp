@@ -12,7 +12,7 @@ Sprite::Sprite(){}
 
 //Constructor for stationary sprites (Tiles, Weapons)
 Sprite::Sprite(string _baseFile):currentFrame(0){
-    createSprite(_baseFile);
+    createSpriteIM(_baseFile, 1);
     cout<<"hi"<<endl;
 }
 
@@ -20,9 +20,10 @@ Sprite::Sprite(string _baseFile):currentFrame(0){
 Sprite::Sprite(string _baseFile, int _totalImage, int _upStart, int _upEnd,int _downStart, int _downEnd, int _rightStart, int _rightEnd):upStart(_upStart),upEnd(_upEnd),downStart(_downStart),downEnd(_downEnd),rightStart(_rightStart),rightEnd(_rightEnd){
         cout<<"hey"<<endl;
     currentFrame  = 0;
-    createSprite(_baseFile);
+    createSpriteIM(_baseFile, _totalImage);
 }
 
+/*
 //Create sprite from folder location provided
 void Sprite::createSprite(string _folderPath){
     //Load all images from folder path requested
@@ -41,6 +42,7 @@ void Sprite::createSprite(string _folderPath){
         images.push_back(img);
     }
 }
+ */
 
 //Adds ofImage references to sprite vector
 //_fileBase = base of file name
@@ -48,7 +50,7 @@ void Sprite::createSprite(string _folderPath){
 void Sprite::createSpriteIM(string _fileBase, int _totalImage){
     for(int i=0; i<_totalImage; i++){
         cout<<_fileBase+to_string(i)<<endl;
-//        images.push_back(ImageManager::get().get(_fileBase+to_string(i)));
+        images.push_back(ImageManager::get().get(_fileBase+to_string(i)));
     }
 }
 
@@ -57,7 +59,7 @@ void Sprite::display(){
 //    for(int i=0; i<images.size(); i++){
 //        images[i].draw(i*30,0, images[i].getWidth(), images[i].getHeight());
 //    }
-    images[currentFrame].draw(-images[currentFrame].getWidth()/2, -images[currentFrame].getHeight()/2, images[currentFrame].getWidth(), images[currentFrame].getHeight());
+    images[currentFrame]->draw(-images[currentFrame]->getWidth()/2, -images[currentFrame]->getHeight()/2, images[currentFrame]->getWidth(), images[currentFrame]->getHeight());
 //    cout<<currentFrame<<endl;
 }
 
@@ -99,7 +101,7 @@ int Sprite::getCurrentFrame(){
 }
 
 ofVec2f Sprite::getSize(){
-    return ofVec2f(images[currentFrame].getWidth(), images[currentFrame].getHeight());
+    return ofVec2f(images[currentFrame]->getWidth(), images[currentFrame]->getHeight());
 }
 
 //Changes curent frame to one specified

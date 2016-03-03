@@ -164,7 +164,7 @@ bool Floormaker::enoughRooms(){
         }
     }
     
-    cout<<numRooms<<" "<<endRooms<<endl;
+//    cout<<numRooms<<" "<<endRooms<<endl;
     if(numRooms>=5 && endRooms>=3){
         return true;
     }

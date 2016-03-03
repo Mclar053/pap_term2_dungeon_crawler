@@ -25,12 +25,14 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-        Floor floor;
+        void loadImages();
+    
+        Floor* floor;
         Room* currentRoom;
         vector<vector<int>> grid, grid2;
         int lvl;
         int size;
-        Player ent = Player(ofVec2f(300,300));
+        Player* ent;
     
 
     

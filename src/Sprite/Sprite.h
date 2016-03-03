@@ -11,9 +11,10 @@
 
 #include <stdio.h>
 #include "../ofMain.h"
+#include "../ImageManager/ImageManager.hpp"
 
 class Sprite{
-    vector<ofImage> images;
+    vector<ofImage*> images;
     int upStart, upEnd; //Frames for up movement
     int downStart, downEnd; //Frames for down movement
     int rightStart, rightEnd; //Frames for left and right movement

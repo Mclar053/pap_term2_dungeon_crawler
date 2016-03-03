@@ -17,6 +17,7 @@
 #include "../Room/NormalRoom/NormalRoom.h"
 #include "../Room/ShopRoom/ShopRoom.h"
 #include "../Room/ItemRoom/ItemRoom.h"
+#include "../Room/BossRoom/BossRoom.h"
 
 class Floor{
     vector<Room*> rooms;

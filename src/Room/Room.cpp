@@ -30,7 +30,7 @@ void Room::display(){
             glPushMatrix();
             glTranslated(50+i*25,150+j*25, 0);
             ofPushStyle();
-            ofSetColor(255, 0, 0);
+            ofSetColor(255, 0, 0); //Red
             ofDrawRectangle(0,0,25,25);
             ofPopStyle();
             glPopMatrix();

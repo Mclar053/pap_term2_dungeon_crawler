@@ -8,7 +8,7 @@
 
 #include "Floor.h"
 
-Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,floorNum){
+Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,2){
     
     fm.generateFloor();
     grid = fm.getGrid();
@@ -26,14 +26,17 @@ void Floor::generateFloor(){
                 case 3:
                     rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
-                case 5:
+                case 4:
                     rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                    break;
+                case 5:
+                    rooms.push_back(new ItemRoom(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
                 case 6:
-                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                    rooms.push_back(new ShopRoom(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
                 case 7:
-                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                    rooms.push_back(new BossRoom(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
                 case 9:
                     rooms.push_back(new SpawnRoom(false,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
@@ -95,10 +98,12 @@ Room* Floor::getRoom(){
 }
 
 void Floor::moveRoom(GridPos _pos){
+    /*
     for(auto _r : rooms){
         cout<<_r->getFloorPos().x<<" "<<_r->getFloorPos().y<<endl;
         for(auto ra : _r->getA()) cout<<ra<<endl;
     }
+     */
     cout<<"Old: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
     currentGridPos.add(_pos);
     cout<<"Current: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;

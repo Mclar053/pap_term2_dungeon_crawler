@@ -29,7 +29,7 @@ class Floormaker{
     bool complete;
     
 public:
-    Floormaker(int _sX=7, int _sY=7, float _fNum=0);
+    Floormaker(int _sX=7, int _sY=7, float _fNum=1);
     void generateSpawn();
     vector<vector<int>> resizeGrid(int _sX=7, int _sY=7);
     
