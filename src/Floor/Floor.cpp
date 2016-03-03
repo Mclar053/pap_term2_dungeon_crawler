@@ -8,14 +8,18 @@
 
 #include "Floor.h"
 
-Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,6){
-    
-    fm.generateFloor();
-    grid = fm.getGrid();
+Floor::Floor(int _floorNum):floorNum(_floorNum),currentRoom(0){
+    fm = new Floormaker(20,20,floorNum);
+    fm->generateFloor();
+    grid = fm->getGrid();
     generateFloor();
     spawnRoom = findSpawn();
     currentRoom = spawnRoom;
     currentGridPos = findSpawnGridPos();
+    
+    //Remove fm as soon as it is not needed
+    delete fm;
+    fm = nullptr;
 }
 
 void Floor::generateFloor(){

@@ -46,7 +46,18 @@ public:
     
     vector<bool> getA();
     
-    virtual ~Room(){};
+    //Removes all doors and tiles when object is deleted
+    virtual ~Room(){
+        for(auto _d : doors){
+            delete _d;
+            _d = nullptr;
+        }
+        
+        for(auto _t : tiles){
+            delete _t;
+            _t = nullptr;
+        }
+    };
     
 };
 

@@ -3,8 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     loadImages();
+    lvl =1;
     ent = new Player(ofVec2f(300,300));
-    floor = new Floor();
+    floor = new Floor(lvl);
     currentRoom = floor->getRoom();
     grid = floor->getGrid();
     size = 10;
@@ -118,6 +119,21 @@ void ofApp::keyPressed(int key){
     if(key==OF_KEY_DOWN){
         ent->moveDown();
     }
+    if(key=='.'){
+        lvl++;
+        delete floor;
+        floor = new Floor(lvl);
+        currentRoom = floor->getRoom();
+        grid = floor->getGrid();
+    }
+    if(key==','){
+        lvl--;
+        delete floor;
+        floor = new Floor(lvl);
+        currentRoom = floor->getRoom();
+        grid = floor->getGrid();
+    }
+    cout<<lvl<<endl;
 }
 
 //--------------------------------------------------------------

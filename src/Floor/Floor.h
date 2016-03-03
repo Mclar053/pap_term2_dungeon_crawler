@@ -22,14 +22,14 @@
 class Floor{
     vector<Room*> rooms;
     vector<vector<int>> grid;
-    Floormaker fm;
+    Floormaker* fm;
     int floorNum;
     int currentRoom;
     int spawnRoom;
     GridPos currentGridPos;
     
 public:
-    Floor();
+    Floor(int _floorNum=1);
     vector<bool> checkAdjacencies(int _i, int _j);
     void generateFloor();
     void nextFloor();
@@ -39,6 +39,14 @@ public:
     GridPos findSpawnGridPos();
     
     vector<vector<int>> getGrid();
+    
+    //Destructor removes all room pointers
+    virtual ~Floor(){
+        for(auto _r : rooms){
+            delete _r;
+            _r = nullptr;
+        }
+    };
     
 };
 
