@@ -23,27 +23,6 @@ Sprite::Sprite(string _baseFile, int _totalImage, int _upStart, int _upEnd,int _
     createSpriteIM(_baseFile, _totalImage);
 }
 
-/*
-//Create sprite from folder location provided
-void Sprite::createSprite(string _folderPath){
-    //Load all images from folder path requested
-    ofDirectory dir(_folderPath);
-    dir.allowExt("png");
-    dir.listDir();
-    
-    //Temporary image variable
-    ofImage img;
-    
-    images.clear();
-    //Load all images into the sprite array
-    for(int i = 0; i < dir.numFiles(); i++){
-//        cout<<dir.getPath(i)<<endl;
-        img.loadImage(dir.getPath(i));
-        images.push_back(img);
-    }
-}
- */
-
 //Adds ofImage references to sprite vector
 //_fileBase = base of file name
 //_totalImage = total number of images for that file base name
@@ -56,11 +35,7 @@ void Sprite::createSpriteIM(string _fileBase, int _totalImage){
 
 //Display current frame of animation
 void Sprite::display(){
-//    for(int i=0; i<images.size(); i++){
-//        images[i].draw(i*30,0, images[i].getWidth(), images[i].getHeight());
-//    }
     images[currentFrame]->draw(-images[currentFrame]->getWidth()/2, -images[currentFrame]->getHeight()/2, images[currentFrame]->getWidth(), images[currentFrame]->getHeight());
-//    cout<<currentFrame<<endl;
 }
 
 //Moves to next frame every 6 frames and loops the animation

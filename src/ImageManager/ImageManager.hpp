@@ -44,6 +44,8 @@ public:
     // loads an image from file and loads it
     void add(string filename);
     
+    
+    //--CHANGED to return pointer as const & cannot be contained in vector container--
     // gets an image by name
     ofImage* get(string name) const {
         return (images.at(name));

@@ -8,7 +8,7 @@
 
 #include "Floor.h"
 
-Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,2){
+Floor::Floor():floorNum(1),currentRoom(0),fm(20,20,6){
     
     fm.generateFloor();
     grid = fm.getGrid();

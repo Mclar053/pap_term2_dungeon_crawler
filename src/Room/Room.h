@@ -17,6 +17,7 @@
 #include "ofMain.h"
 #include "../GameObject/Entity/Player/Player.h"
 #include "../GameObject/Door/Door.hpp"
+#include "../GameObject/Tile/FloorTile/FloorTile.hpp"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ protected:
     vector<vector<int>> grid;
     vector<bool> roomAdjacency;
     vector<Door*> doors;
+    vector<Tile*> tiles;
 //    vector<Enemy> entities;
     
     bool fighting;

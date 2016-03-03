@@ -25,17 +25,24 @@ Room::Room(bool _fight){
 }
 
 void Room::display(){
-    for(int i=0; i<grid[0].size(); i++){
-        for(int j=0; j<grid.size(); j++){
-            glPushMatrix();
-            glTranslated(50+i*25,150+j*25, 0);
-            ofPushStyle();
-            ofSetColor(255, 0, 0); //Red
-            ofDrawRectangle(0,0,25,25);
-            ofPopStyle();
-            glPopMatrix();
-        }
+    
+    for(auto _tile: tiles){
+        glPushMatrix();
+        glTranslated(62.5,162.5, 0);
+        _tile->display();
+        glPopMatrix();
     }
+//    for(int i=0; i<grid[0].size(); i++){
+//        for(int j=0; j<grid.size(); j++){
+//            glPushMatrix();
+//            glTranslated(50+i*25,150+j*25, 0);
+//            ofPushStyle();
+//            ofSetColor(255, 0, 0); //Red
+//            ofDrawRectangle(0,0,25,25);
+//            ofPopStyle();
+//            glPopMatrix();
+//        }
+//    }
     for(auto _door: doors){
         _door->display();
     }
@@ -61,6 +68,11 @@ void Room::generateRoom(){
                     break;
             }
             doors.push_back(new Door(_pos,i));
+        }
+    }
+    for(int i=0; i<grid[0].size(); i++){
+        for(int j=0; j<grid.size(); j++){
+            tiles.push_back(new FloorTile(ofVec2f(i*25, j*25)));
         }
     }
 }

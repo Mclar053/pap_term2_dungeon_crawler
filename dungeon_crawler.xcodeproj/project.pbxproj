@@ -18,6 +18,8 @@
 		6E41FD611C594A6F00339344 /* GridPos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E41FD5F1C594A6F00339344 /* GridPos.cpp */; };
 		6E4C7C4E1C84A09200B4B7D8 /* SpawnRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E4C7C4C1C84A09200B4B7D8 /* SpawnRoom.cpp */; };
 		6E5DDDC91C885C3900DD64DD /* ImageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E5DDDC71C885C3900DD64DD /* ImageManager.cpp */; };
+		6E5DDDD21C88CDE100DD64DD /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E5DDDD01C88CDE100DD64DD /* Tile.cpp */; };
+		6E5DDDD51C88CDFA00DD64DD /* FloorTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E5DDDD31C88CDFA00DD64DD /* FloorTile.cpp */; };
 		6E95FC9B1C84D1BF003F8E4B /* Door.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E95FC991C84D1BF003F8E4B /* Door.cpp */; };
 		6E9664A81C7376B9007FC13B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E9664A61C7376B9007FC13B /* GameObject.cpp */; };
 		6E9664AC1C7376DF007FC13B /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E9664AA1C7376DF007FC13B /* Entity.cpp */; };
@@ -79,6 +81,10 @@
 		6E4C7C4D1C84A09200B4B7D8 /* SpawnRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpawnRoom.h; path = Room/SpawnRoom/SpawnRoom.h; sourceTree = "<group>"; };
 		6E5DDDC71C885C3900DD64DD /* ImageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageManager.cpp; path = ImageManager/ImageManager.cpp; sourceTree = "<group>"; };
 		6E5DDDC81C885C3900DD64DD /* ImageManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ImageManager.hpp; path = ImageManager/ImageManager.hpp; sourceTree = "<group>"; };
+		6E5DDDD01C88CDE100DD64DD /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tile.cpp; path = GameObject/Tile/Tile.cpp; sourceTree = "<group>"; };
+		6E5DDDD11C88CDE100DD64DD /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Tile.hpp; path = GameObject/Tile/Tile.hpp; sourceTree = "<group>"; };
+		6E5DDDD31C88CDFA00DD64DD /* FloorTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FloorTile.cpp; path = GameObject/Tile/FloorTile/FloorTile.cpp; sourceTree = "<group>"; };
+		6E5DDDD41C88CDFA00DD64DD /* FloorTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FloorTile.hpp; path = GameObject/Tile/FloorTile/FloorTile.hpp; sourceTree = "<group>"; };
 		6E95FC991C84D1BF003F8E4B /* Door.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Door.cpp; path = GameObject/Door/Door.cpp; sourceTree = "<group>"; };
 		6E95FC9A1C84D1BF003F8E4B /* Door.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Door.hpp; path = GameObject/Door/Door.hpp; sourceTree = "<group>"; };
 		6E9664A61C7376B9007FC13B /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = GameObject/GameObject.cpp; sourceTree = "<group>"; };
@@ -188,9 +194,29 @@
 			name = ImageManager;
 			sourceTree = "<group>";
 		};
+		6E5DDDCE1C88907500DD64DD /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				6E5DDDCF1C88907A00DD64DD /* FloorTile */,
+				6E5DDDD01C88CDE100DD64DD /* Tile.cpp */,
+				6E5DDDD11C88CDE100DD64DD /* Tile.hpp */,
+			);
+			name = Tile;
+			sourceTree = "<group>";
+		};
+		6E5DDDCF1C88907A00DD64DD /* FloorTile */ = {
+			isa = PBXGroup;
+			children = (
+				6E5DDDD31C88CDFA00DD64DD /* FloorTile.cpp */,
+				6E5DDDD41C88CDFA00DD64DD /* FloorTile.hpp */,
+			);
+			name = FloorTile;
+			sourceTree = "<group>";
+		};
 		6E9664A51C7376A2007FC13B /* GameObject */ = {
 			isa = PBXGroup;
 			children = (
+				6E5DDDCE1C88907500DD64DD /* Tile */,
 				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
 				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6E4C7C511C84C31A00B4B7D8 /* Door */,
@@ -398,9 +424,11 @@
 				6E9664A81C7376B9007FC13B /* GameObject.cpp in Sources */,
 				6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				6E5DDDD51C88CDFA00DD64DD /* FloorTile.cpp in Sources */,
 				6E4C7C4E1C84A09200B4B7D8 /* SpawnRoom.cpp in Sources */,
 				6E41FD5E1C594A6500339344 /* Floormaker.cpp in Sources */,
 				6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */,
+				6E5DDDD21C88CDE100DD64DD /* Tile.cpp in Sources */,
 				6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */,
 				6E3484671C66666900EDB649 /* Room.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,

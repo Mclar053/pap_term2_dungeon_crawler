@@ -25,7 +25,7 @@ public:
     GameObject();
     GameObject(ofVec2f _pos);
     //Methods
-    virtual void display() =0; //Virtual to allow other child classes to overwrite it. Pure virtual function.
+    virtual void display(); //Virtual to allow other child classes to overwrite it. Pure virtual function.
     ofVec2f getSize(); //Gets size of the gameSprite
     ofVec2f getPos(); //Get position of player
     void setPos(ofVec2f _pos);
