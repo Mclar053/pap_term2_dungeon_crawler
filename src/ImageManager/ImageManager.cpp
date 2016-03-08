@@ -5,6 +5,7 @@
 //  Created by Marco Gillies on 10/12/2015.
 //
 //
+//Reference: https://github.com/marcogillies/ImageManager
 
 #include "ImageManager.hpp"
 

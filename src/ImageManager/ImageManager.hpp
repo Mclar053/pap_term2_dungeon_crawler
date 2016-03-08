@@ -18,6 +18,10 @@
 /* 
  *  This class is a central place to store all images used in 
  *  the game so you only have to load them into memory once.
+ 
+ 
+ Reference: https://github.com/marcogillies/ImageManager
+ Marco Gillies
  */
 class ImageManager {
     // the images are stored in a map so you can
