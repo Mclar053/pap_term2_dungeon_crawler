@@ -16,6 +16,8 @@ class Enemy : public Entity{
     
     
 public:
-    Enemy(ofVec2f _pos = ofVec2f(200,200), float _maxVel = 3);
+    Enemy(ofVec2f _pos, float _maxVel);
+    
+    virtual void movePattern();
 };
 #endif /* Enemy_hpp */
