@@ -64,7 +64,7 @@ public:
     //Key Pressed. Empty by default
     virtual void keyPressed(int key){};
     
-    virtual void die();
+    virtual void die(){};
     
     virtual ~GameObject(){};
     
