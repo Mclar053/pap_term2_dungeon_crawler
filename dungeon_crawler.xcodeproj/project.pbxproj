@@ -242,8 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				6E5DDDCE1C88907500DD64DD /* Tile */,
-				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
-				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6E4C7C511C84C31A00B4B7D8 /* Door */,
 				6E9664A91C7376D0007FC13B /* Entity */,
 			);
@@ -337,6 +335,8 @@
 			children = (
 				6E5DDDC61C885C2900DD64DD /* ImageManager */,
 				6E9664A51C7376A2007FC13B /* GameObject */,
+				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
+				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6EA7A5111C61084B00F9B303 /* Sprite */,
 				6EA7A4B11C6105B600F9B303 /* Floor */,
 				6EA7A4B01C6105AC00F9B303 /* Rooms */,

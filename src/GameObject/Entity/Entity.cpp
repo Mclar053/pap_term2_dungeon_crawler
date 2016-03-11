@@ -12,10 +12,7 @@ Entity::Entity(ofVec2f _pos, float _maxVel):GameObject(_pos),left(false),right(f
     
 }
 
-void Entity::display(){
-    glPushMatrix();
-    glTranslated(pos.x, pos.y, 0);
-    
+void Entity::subDisplay(){
     glScalef(direction, 1, 1);
     
     gameSprite.display();
@@ -25,7 +22,6 @@ void Entity::display(){
     else{
         gameSprite.setCurrentFrame(spriteStart);
     }
-    glPopMatrix();
 }
 
 void Entity::move(){

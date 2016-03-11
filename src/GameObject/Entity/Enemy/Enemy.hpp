@@ -13,7 +13,10 @@
 #include "../Entity.h"
 
 class Enemy : public Entity{
-    
+protected:
+    vector<int> movementPattern;
+    int currentMove;
+    int delay;
     
 public:
     Enemy(ofVec2f _pos, float _maxVel);

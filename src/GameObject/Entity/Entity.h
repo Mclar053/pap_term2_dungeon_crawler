@@ -27,7 +27,7 @@ public:
     
     void reset();
     
-    void display();
+    void subDisplay();
     
     /*Physics*/
     void move();

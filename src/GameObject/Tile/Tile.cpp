@@ -11,3 +11,7 @@
 Tile::Tile(ofVec2f _pos):GameObject(_pos){
     
 }
+
+void Tile::subDisplay(){
+    gameSprite.display();
+}

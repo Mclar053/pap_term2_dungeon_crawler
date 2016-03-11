@@ -17,6 +17,7 @@ class Tile: public GameObject{
     
 public:
     Tile(ofVec2f _pos);
+    virtual void subDisplay();
 };
 
 #endif /* Tile_hpp */

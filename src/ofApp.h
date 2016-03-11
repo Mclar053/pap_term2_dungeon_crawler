@@ -5,6 +5,7 @@
 #include "Floor/Floor.h"
 #include "Room/Room.h"
 #include "GameObject/Entity/Player/Player.h"
+#include "GameObject/Entity/Enemy/Guy/Guy.hpp"
 
 class ofApp : public ofBaseApp{
 

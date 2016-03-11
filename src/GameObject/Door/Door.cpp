@@ -13,12 +13,9 @@ Door::Door(ofVec2f _pos, int _direction):GameObject(_pos), open(true){
     calcRotation(_direction);
 }
 
-void Door::display(){
-    ofPushMatrix();
-        ofTranslate(pos.x, pos.y);
-        ofRotate(rotation);
-        gameSprite.display();
-    ofPopMatrix();
+void Door::subDisplay(){
+    ofRotate(rotation);
+    gameSprite.display();
 }
 
 void Door::calcRotation(int _dir){

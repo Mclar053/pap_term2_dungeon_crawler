@@ -18,18 +18,59 @@ GameObject::GameObject(ofVec2f _pos):pos(_pos){
 void GameObject::display(){
     glPushMatrix();
     glTranslated(pos.x, pos.y, 0);
-    gameSprite.display();
+    subDisplay();
     glPopMatrix();
 }
 
-//Gets size of gamesprite and sets the size to gamesprites current size
-ofVec2f GameObject::getSize(){
-    return gameSprite.getSize();
-}
-ofVec2f GameObject::getPos(){
-    return pos;
+/*
+ Detects if 'other GO' has hit the left side of the 'current GO'
+ */
+bool GameObject::collideLeft(GameObject* other){
+    if(other->getPos().x+other->getSize().x/2>this->getPos().x-this->getSize().x/2 &&
+       other->getPos().x-other->getSize().x/2<this->getPos().x-this->getSize().x/2+5 &&
+       other->getPos().y+other->getSize().y/2>this->getPos().y-this->getSize().y/2+10 &&
+       other->getPos().y-other->getSize().y/2<=this->getPos().y+this->getSize().y/2-10){
+        return true;
+    }
+    return false;
 }
 
-void GameObject::setPos(ofVec2f _pos){
-    pos.set(_pos);
+/*
+ Detects if 'other GO' has hit the right side of the 'current GO'
+ */
+bool GameObject::collideRight(GameObject* other){
+    if(other->getPos().x+other->getSize().x/2>this->getPos().x+this->getSize().x/2-5 &&
+       other->getPos().x-other->getSize().x/2<this->getPos().x+this->getSize().x/2 &&
+       other->getPos().y+other->getSize().y/2>this->getPos().y-this->getSize().y/2+10 &&
+       other->getPos().y-other->getSize().y/2<=this->getPos().y+this->getSize().y/2-10){
+        return true;
+    }
+    return false;
+}
+
+/*
+ Detects if 'other GO' has hit the top side of the 'current GO'
+ */
+
+bool GameObject::collideTop(GameObject* other){
+    if(other->getPos().x+other->getSize().x/2>this->getPos().x-this->getSize().x/2+10 &&
+       other->getPos().x-other->getSize().x/2<=this->getPos().x+this->getSize().x/2-10 &&
+       other->getPos().y+other->getSize().y/2>this->getPos().y-this->getSize().y/2 &&
+       other->getPos().y-other->getSize().y/2<this->getPos().y-this->getSize().y/2+2){
+        return true;
+    }
+    return false;
+}
+
+/*
+ Detects if 'other GO' has hit the bottom side of the 'current GO'
+ */
+bool GameObject::collideBottom(GameObject* other){
+    if(other->getPos().x+other->getSize().x/2>this->getPos().x-this->getSize().x/2+10 &&
+       other->getPos().x-other->getSize().x/2<=this->getPos().x+this->getSize().x/2-10 &&
+       other->getPos().y+other->getSize().y/2>this->getPos().y+this->getSize().y/2-2 &&
+       other->getPos().y-other->getSize().y/2<this->getPos().y+this->getSize().y/2){
+        return true;
+    }
+    return false;
 }

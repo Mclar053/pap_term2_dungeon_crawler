@@ -10,8 +10,5 @@
 
 Enemy_Guy::Enemy_Guy(ofVec2f _pos, float _maxVel):Enemy(_pos,_maxVel){
     gameSprite = Sprite("player", 16, 0, 7, 0, 7, 8, 15);
-}
-
-void Enemy_Guy::movePattern(){
-    
+    movementPattern = {2,3,0,1};
 }
