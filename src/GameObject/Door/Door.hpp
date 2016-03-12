@@ -23,11 +23,6 @@ public:
     void subDisplay();
     bool checkOpen();
     
-    bool detectLeft(Player &_player);
-    bool detectRight(Player &_player);
-    bool detectTop(Player &_player);
-    bool detectBottom(Player &_player);
-    
 };
 
 #endif /* Door_hpp */

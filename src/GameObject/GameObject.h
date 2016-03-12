@@ -16,23 +16,10 @@
 //Abstract class
 class GameObject{
     
-    //Individual collision checks
-    bool collideTop(GameObject* other);
-    bool collideLeft(GameObject* other);
-    bool collideRight(GameObject* other);
-    bool collideBottom(GameObject* other);
-    
 protected:
     Sprite gameSprite;
     ofVec2f pos;
     ofVec2f size;
-    
-    //Individual collision responses for all direction
-    //Empty by default
-    virtual void collideResponseTop(GameObject* other){};
-    virtual void collideResponseLeft(GameObject* other){};
-    virtual void collideResponseRight(GameObject* other){};
-    virtual void collideResponseBottom(GameObject* other){};
     
 public:
     GameObject();
@@ -65,6 +52,12 @@ public:
     virtual void keyPressed(int key){};
     
     virtual void die(){};
+    
+    //Individual collision checks
+    bool collideTop(GameObject* other);
+    bool collideLeft(GameObject* other);
+    bool collideRight(GameObject* other);
+    bool collideBottom(GameObject* other);
     
     virtual ~GameObject(){};
     
