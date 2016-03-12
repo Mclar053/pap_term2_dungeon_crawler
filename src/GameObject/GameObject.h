@@ -46,8 +46,6 @@ public:
         pos.set(_pos);
     }
     
-    void collide(GameObject* other);
-    
     //Key Pressed. Empty by default
     virtual void keyPressed(int key){};
     
@@ -58,6 +56,7 @@ public:
     bool collideLeft(GameObject* other);
     bool collideRight(GameObject* other);
     bool collideBottom(GameObject* other);
+    bool collide(GameObject* other);
     
     virtual ~GameObject(){};
     

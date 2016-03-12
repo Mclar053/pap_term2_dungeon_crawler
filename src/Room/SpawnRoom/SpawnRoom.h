@@ -20,6 +20,8 @@ public:
     SpawnRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
     
     void display();
+    
+    virtual void subGenerateRoom();
 };
 
 #endif /* defined(__dungeon_crawler__SpawnRoom__) */

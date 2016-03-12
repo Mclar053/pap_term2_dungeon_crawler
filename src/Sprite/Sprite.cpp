@@ -76,6 +76,9 @@ int Sprite::getCurrentFrame(){
 }
 
 ofVec2f Sprite::getSize(){
+    if(currentFrame>images.size()){
+        currentFrame = 0;
+    }
     return ofVec2f(images[currentFrame]->getWidth(), images[currentFrame]->getHeight());
 }
 

@@ -13,7 +13,7 @@ ShopRoom::ShopRoom():Room(false){
 }
 
 ShopRoom::ShopRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(_fight,_fPos,_left,_up,_right,_down){
-    
+    generateRoom();
 }
 
 void ShopRoom::display(){
@@ -31,4 +31,8 @@ void ShopRoom::display(){
     for(auto _door: doors){
         _door->display();
     }
+}
+
+void ShopRoom::subGenerateRoom(){
+    
 }

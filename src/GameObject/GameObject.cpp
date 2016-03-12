@@ -74,3 +74,10 @@ bool GameObject::collideBottom(GameObject* other){
     }
     return false;
 }
+
+bool GameObject::collide(GameObject* other){
+    if(this->collideLeft(other) || this->collideRight(other) || this->collideTop(other) || this->collideBottom(other)){
+        return true;
+    }
+    return false;
+}

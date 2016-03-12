@@ -9,31 +9,42 @@
 #include "Enemy.hpp"
 
 Enemy::Enemy(ofVec2f _pos, float _maxVel):Entity(_pos, _maxVel){
+    lastFrame = 0;
+    currentMove = 0;
 }
 
 void Enemy::movePattern(){
-    if(ofGetFrameNum()%delay == 0){
-        currentMove++;
-        switch (movementPattern[movementPattern.size()%currentMove]) {
-            case 1:
-                reset();
-                moveRight();
-                break;
-                
-            case 2:
-                reset();
-                moveDown();
-                break;
-                
-            case 3:
-                reset();
-                moveLeft();
-                break;
-                
-            default:
-                reset();
-                moveUp();
-                break;
-        }
+    switch (movementPattern[currentMove][0]) {
+        case 1:
+            reset();
+            moveRight();
+            break;
+            
+        case 2:
+            reset();
+            moveDown();
+            break;
+            
+        case 3:
+            reset();
+            moveLeft();
+            break;
+            
+        case 0:
+            reset();
+            moveUp();
+            break;
+            
+        default:
+            reset();
+            break;
+    }
+}
+
+void Enemy::moveNextPattern(){
+    if(ofGetFrameNum()>lastFrame+movementPattern[currentMove][1]){
+        lastFrame = ofGetFrameNum();
+        currentMove+=1;
+        currentMove = currentMove%movementPattern.size();
     }
 }

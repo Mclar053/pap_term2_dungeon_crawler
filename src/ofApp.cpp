@@ -15,6 +15,12 @@ void ofApp::setup(){
 void ofApp::update(){
     ent->move();
     vector<Door*> doors = currentRoom->getDoors();
+    vector<Entity*> entities = currentRoom->getEntities();
+    for(auto &_ent: entities){
+        _ent->moveNextPattern();
+        _ent->movePattern();
+        _ent->move();
+    }
     for(auto &_door: doors){
         if(_door->collideLeft(ent)){
             ent->setPos(ofVec2f(150,375));

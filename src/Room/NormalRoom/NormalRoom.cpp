@@ -9,5 +9,13 @@
 #include "NormalRoom.h"
 
 NormalRoom::NormalRoom():Room(true){
-    
+
+}
+
+NormalRoom::NormalRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(false,_fPos,_left,_up,_right,_down){
+    generateRoom();
+}
+
+void NormalRoom::subGenerateRoom(){
+    entities.push_back(new Enemy_Guy());
 }

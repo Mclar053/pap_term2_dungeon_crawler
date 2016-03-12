@@ -13,7 +13,7 @@ BossRoom::BossRoom():Room(true){
 }
 
 BossRoom::BossRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(_fight,_fPos,_left,_up,_right,_down){
-    
+    generateRoom();
 }
 
 void BossRoom::display(){
@@ -31,4 +31,8 @@ void BossRoom::display(){
     for(auto _door: doors){
         _door->display();
     }
+}
+
+void BossRoom::subGenerateRoom(){
+    
 }

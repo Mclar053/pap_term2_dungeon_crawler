@@ -16,8 +16,6 @@ Room::Room(bool _fight, GridPos _fPos ,bool _up,bool _right, bool _down, bool _l
     roomAdjacency.push_back(_right);
     roomAdjacency.push_back(_down);
     roomAdjacency.push_back(_left);
-    
-    generateRoom();
 }
 
 Room::Room(bool _fight){
@@ -26,25 +24,22 @@ Room::Room(bool _fight){
 
 void Room::display(){
     
+    //Display all tiles
     for(auto _tile: tiles){
         glPushMatrix();
         glTranslated(62.5,162.5, 0);
         _tile->display();
         glPopMatrix();
     }
-//    for(int i=0; i<grid[0].size(); i++){
-//        for(int j=0; j<grid.size(); j++){
-//            glPushMatrix();
-//            glTranslated(50+i*25,150+j*25, 0);
-//            ofPushStyle();
-//            ofSetColor(255, 0, 0); //Red
-//            ofDrawRectangle(0,0,25,25);
-//            ofPopStyle();
-//            glPopMatrix();
-//        }
-//    }
+    
+    //Display all doors
     for(auto _door: doors){
         _door->display();
+    }
+    
+    //Display all entities
+    for(auto _ent: entities){
+        _ent->display();
     }
 }
 
@@ -75,16 +70,23 @@ void Room::generateRoom(){
             tiles.push_back(new FloorTile(ofVec2f(i*25, j*25)));
         }
     }
+    
+    subGenerateRoom();
 }
 
-vector<bool> Room::getA(){
-    return roomAdjacency;
-}
-
-vector<Door*> Room::getDoors(){
-    return doors;
-}
-
-GridPos Room::getFloorPos(){
-    return floorPos;
+Room::~Room(){
+    for(auto _d : doors){
+        delete _d;
+        _d = nullptr;
+    }
+    
+    for(auto _t : tiles){
+        delete _t;
+        _t = nullptr;
+    }
+    
+    for(auto _e: entities){
+        delete _e;
+        _e = nullptr;
+    }
 }

@@ -27,11 +27,8 @@ void Floor::generateFloor(){
         for(int j=0; j<grid.size(); j++){
             vector<bool> roomAdjacent = checkAdjacencies(i, j);
             switch(grid[j][i]){
-                case 3:
-                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
-                    break;
-                case 4:
-                    rooms.push_back(new Room(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
+                case 3: case 4:
+                    rooms.push_back(new NormalRoom(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
                     break;
                 case 5:
                     rooms.push_back(new ItemRoom(true,GridPos(j,i),roomAdjacent[0],roomAdjacent[1],roomAdjacent[2],roomAdjacent[3]));
@@ -102,12 +99,6 @@ Room* Floor::getRoom(){
 }
 
 void Floor::moveRoom(GridPos _pos){
-    /*
-    for(auto _r : rooms){
-        cout<<_r->getFloorPos().x<<" "<<_r->getFloorPos().y<<endl;
-        for(auto ra : _r->getA()) cout<<ra<<endl;
-    }
-     */
     cout<<"Old: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
     currentGridPos.add(_pos);
     cout<<"Current: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;

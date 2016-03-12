@@ -14,13 +14,18 @@
 
 class Enemy : public Entity{
 protected:
-    vector<int> movementPattern;
+    //Direction and delay per move
+    vector<vector<int>> movementPattern;
+    //Current move in movement pattern
     int currentMove;
-    int delay;
+    
+    //Holds the last frame the enemy changed direction
+    int lastFrame;
     
 public:
     Enemy(ofVec2f _pos, float _maxVel);
     
     virtual void movePattern();
+    virtual void moveNextPattern();
 };
 #endif /* Enemy_hpp */

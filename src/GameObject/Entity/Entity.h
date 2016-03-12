@@ -61,6 +61,9 @@ public:
     void wallWrap(); //Allows entities to move to other side of screen
     bool checkWallX(); //Checks between x<0 and x>width
     bool checkWallY(); //Checks between y<0 and y>height
+    
+    virtual void movePattern(){};
+    virtual void moveNextPattern(){};
 };
 
 #endif /* defined(__dungeon_crawler__Entity__) */

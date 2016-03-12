@@ -12,8 +12,8 @@ SpawnRoom::SpawnRoom():Room(false){
     
 }
 
-SpawnRoom::SpawnRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(_fight,_fPos,_left,_up,_right,_down){
-    
+SpawnRoom::SpawnRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(false,_fPos,_left,_up,_right,_down){
+    generateRoom();
 }
 
 void SpawnRoom::display(){
@@ -31,4 +31,8 @@ void SpawnRoom::display(){
     for(auto _door: doors){
         _door->display();
     }
+}
+
+void SpawnRoom::subGenerateRoom(){
+    
 }

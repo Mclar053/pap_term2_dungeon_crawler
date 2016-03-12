@@ -12,8 +12,8 @@ ItemRoom::ItemRoom():Room(false){
     
 }
 
-ItemRoom::ItemRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(_fight,_fPos,_left,_up,_right,_down){
-    
+ItemRoom::ItemRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(false,_fPos,_left,_up,_right,_down){
+    generateRoom();
 }
 
 void ItemRoom::display(){
@@ -31,4 +31,8 @@ void ItemRoom::display(){
     for(auto _door: doors){
         _door->display();
     }
+}
+
+void ItemRoom::subGenerateRoom(){
+    
 }

@@ -39,26 +39,33 @@ public:
     Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
     
     void generateRoom();
+    virtual void subGenerateRoom()=0;
     bool checkEmpty();
     virtual void display();
-    void playerDoorCollision(Player& _player);
-    vector<Door*> getDoors();
-    GridPos getFloorPos();
     
-    vector<bool> getA();
+    vector<Door*> getDoors(){
+        return doors;
+    };
+    
+    vector<Entity*> getEntities(){
+        return entities;
+    };
+    
+    GridPos getFloorPos(){
+        return floorPos;
+    };
+    
+    vector<bool> getA(){
+        return roomAdjacency;
+    };
+    
+    ofVec2f getSize(){
+        return ofVec2f(700,450);
+    }
+    
     
     //Removes all doors and tiles when object is deleted
-    virtual ~Room(){
-        for(auto _d : doors){
-            delete _d;
-            _d = nullptr;
-        }
-        
-        for(auto _t : tiles){
-            delete _t;
-            _t = nullptr;
-        }
-    };
+    virtual ~Room();
     
 };
 
