@@ -7,6 +7,7 @@
 //
 
 #include "Enemy.hpp"
+#include "../Player/Player.h"
 
 Enemy::Enemy(ofVec2f _pos, float _maxVel):Entity(_pos, _maxVel){
     lastFrame = 0;
@@ -46,5 +47,12 @@ void Enemy::moveNextPattern(){
         lastFrame = ofGetFrameNum();
         currentMove+=1;
         currentMove = currentMove%movementPattern.size();
+    }
+}
+
+void Enemy::collisionResponse(GameObject* other){
+    Player* player = dynamic_cast<Player*>(other);
+    if(player){
+        player->takeDamage(1);
     }
 }

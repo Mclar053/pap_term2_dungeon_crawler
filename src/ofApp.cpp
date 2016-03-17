@@ -2,9 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    font = new ofTrueTypeFont();
+    font->load(OF_TTF_SANS, 18);
     loadImages();
     lvl =1;
-    ent = new Player(ofVec2f(300,300));
+    player = new Player(ofVec2f(300,300));
     floor = new Floor(lvl);
     currentRoom = floor->getRoom();
     grid = floor->getGrid();
@@ -13,35 +15,40 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ent->move();
+    player->move();
     vector<Door*> doors = currentRoom->getDoors();
-    vector<Entity*> entities = currentRoom->getEntities();
-    for(auto &_ent: entities){
-        _ent->moveNextPattern();
-        _ent->movePattern();
-        _ent->move();
+    vector<Enemy*> enemies = currentRoom->getEnemies();
+    for(auto &_ene: enemies){
+        _ene->moveNextPattern();
+        _ene->movePattern();
+        _ene->move();
+        if(_ene->collide(player)){
+            _ene->collisionResponse(player);
+        }
     }
+    
+    
     for(auto &_door: doors){
-        if(_door->collideLeft(ent)){
-            ent->setPos(ofVec2f(150,375));
+        if(_door->collideLeft(player)){
+            player->setPos(ofVec2f(150,375));
             floor->moveRoom(GridPos(0,1));
             currentRoom = floor->getRoom();
             cout<<"left"<<endl;
         }
-        if(_door->collideRight(ent)){
-            ent->setPos(ofVec2f(650,375));
+        if(_door->collideRight(player)){
+            player->setPos(ofVec2f(650,375));
             floor->moveRoom(GridPos(0,-1));
             currentRoom = floor->getRoom();
             cout<<"right"<<endl;
         }
-        if(_door->collideTop(ent)){
-            ent->setPos(ofVec2f(400,250));
+        if(_door->collideTop(player)){
+            player->setPos(ofVec2f(400,250));
             floor->moveRoom(GridPos(1,0));
             currentRoom = floor->getRoom();
             cout<<"top"<<endl;
         }
-        if(_door->collideBottom(ent)){
-            ent->setPos(ofVec2f(400,550));
+        if(_door->collideBottom(player)){
+            player->setPos(ofVec2f(400,550));
             floor->moveRoom(GridPos(-1,0));
             currentRoom = floor->getRoom();
             cout<<"bottom"<<endl;
@@ -54,7 +61,11 @@ void ofApp::update(){
 void ofApp::draw(){
 //    ofBackground(255);
     currentRoom->display();
-    ent->display();
+    player->display();
+    ofPushStyle();
+    ofSetColor(0);
+    font->drawString(to_string(player->getHealth()), ofGetWidth()/2, 40);
+    ofPopStyle();
     //**
     glPushMatrix();
     glTranslated(20, 20, 0);
@@ -114,16 +125,16 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key==OF_KEY_LEFT){
-        ent->moveLeft();
+        player->moveLeft();
     }
     if(key==OF_KEY_RIGHT){
-        ent->moveRight();
+        player->moveRight();
     }
     if(key==OF_KEY_UP){
-        ent->moveUp();
+        player->moveUp();
     }
     if(key==OF_KEY_DOWN){
-        ent->moveDown();
+        player->moveDown();
     }
     if(key=='.'){
         lvl++;
@@ -145,16 +156,16 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     if(key==OF_KEY_LEFT){
-        ent->stopLeft();
+        player->stopLeft();
     }
     if(key==OF_KEY_RIGHT){
-        ent->stopRight();
+        player->stopRight();
     }
     if(key==OF_KEY_UP){
-        ent->stopUp();
+        player->stopUp();
     }
     if(key==OF_KEY_DOWN){
-        ent->stopDown();
+        player->stopDown();
     }
 }
 

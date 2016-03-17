@@ -38,8 +38,8 @@ void Room::display(){
     }
     
     //Display all entities
-    for(auto _ent: entities){
-        _ent->display();
+    for(auto _ene: enemies){
+        _ene->display();
     }
 }
 
@@ -85,7 +85,7 @@ Room::~Room(){
         _t = nullptr;
     }
     
-    for(auto _e: entities){
+    for(auto _e: enemies){
         delete _e;
         _e = nullptr;
     }

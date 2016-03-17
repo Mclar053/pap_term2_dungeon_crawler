@@ -30,7 +30,8 @@ protected:
     vector<bool> roomAdjacency;
     vector<Door*> doors;
     vector<Tile*> tiles;
-    vector<Entity*> entities;
+    vector<Enemy*> enemies;
+//    vector<Pickup*> enemies;
     
     bool fighting;
     
@@ -47,8 +48,8 @@ public:
         return doors;
     };
     
-    vector<Entity*> getEntities(){
-        return entities;
+    vector<Enemy*> getEnemies(){
+        return enemies;
     };
     
     GridPos getFloorPos(){

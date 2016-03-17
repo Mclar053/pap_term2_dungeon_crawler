@@ -17,5 +17,5 @@ NormalRoom::NormalRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _ri
 }
 
 void NormalRoom::subGenerateRoom(){
-    entities.push_back(new Enemy_Guy());
+    enemies.push_back(new Enemy_Guy());
 }

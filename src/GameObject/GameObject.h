@@ -20,6 +20,7 @@ protected:
     Sprite gameSprite;
     ofVec2f pos;
     ofVec2f size;
+    bool dead;
     
 public:
     GameObject();
@@ -49,7 +50,13 @@ public:
     //Key Pressed. Empty by default
     virtual void keyPressed(int key){};
     
-    virtual void die(){};
+    //Sets dead bool to true
+    virtual void die();
+    
+    //Checks if object is alive
+    bool isAlive(){
+        return !dead;
+    }
     
     //Individual collision checks
     bool collideTop(GameObject* other);
@@ -57,6 +64,9 @@ public:
     bool collideRight(GameObject* other);
     bool collideBottom(GameObject* other);
     bool collide(GameObject* other);
+    
+    //Calls response of collision with another gameobject
+    virtual void collisionResponse(GameObject* other);
     
     virtual ~GameObject(){};
     

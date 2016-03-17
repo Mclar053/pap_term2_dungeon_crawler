@@ -20,13 +20,22 @@ class Entity: public GameObject{
     bool left, right, up, down;
     int direction; //States the direction the sprite is facing (-1=left, 1=right)
     
+    //Health value
+    float health;
+    
+    //Current start and end of sprite animation
     int spriteStart, spriteEnd;
     
-public:
-    Entity(ofVec2f _pos = ofVec2f(200,200), float _maxVel = 5);
+    int lastFrames; //Reference for invincibility
+    int iFrames; //Invincibilty frames
     
+public:
+    Entity(ofVec2f _pos = ofVec2f(200,200), float _maxVel = 5, int _iFrames = 0);
+    
+    //Stops all movement
     void reset();
     
+    //Draws to screen the gameSprite
     void subDisplay();
     
     /*Physics*/
@@ -54,7 +63,7 @@ public:
     //Returns velocity of Entity
     ofVec2f getVel();
     
-    //Collisions
+    //Wall Collisions
     bool edgeDetect();
     
     /*Features*/
@@ -64,6 +73,18 @@ public:
     
     virtual void movePattern(){};
     virtual void moveNextPattern(){};
+    
+    void takeDamage(float d);
+    
+    void addHealth(float h);
+    
+    //Checks if entity can be damaged
+    bool checkDamage();
+    
+    //Temporary
+    float getHealth(){
+        return health;
+    }
 };
 
 #endif /* defined(__dungeon_crawler__Entity__) */

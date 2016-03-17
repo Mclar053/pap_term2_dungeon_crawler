@@ -137,6 +137,52 @@
 			name = Player;
 			sourceTree = "<group>";
 		};
+		6E18F5B01C9AEB8A00E7763F /* Pickup */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5B41C9AEBAD00E7763F /* ShotSpeed */,
+				6E18F5B31C9AEBA900E7763F /* Speed */,
+				6E18F5B21C9AEB9F00E7763F /* Damage */,
+				6E18F5B11C9AEB9200E7763F /* Health */,
+			);
+			name = Pickup;
+			sourceTree = "<group>";
+		};
+		6E18F5B11C9AEB9200E7763F /* Health */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Health;
+			sourceTree = "<group>";
+		};
+		6E18F5B21C9AEB9F00E7763F /* Damage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Damage;
+			sourceTree = "<group>";
+		};
+		6E18F5B31C9AEBA900E7763F /* Speed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Speed;
+			sourceTree = "<group>";
+		};
+		6E18F5B41C9AEBAD00E7763F /* ShotSpeed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ShotSpeed;
+			sourceTree = "<group>";
+		};
+		6E18F5B51C9AEBC900E7763F /* Projectile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Projectile;
+			sourceTree = "<group>";
+		};
 		6E2CA25D1C6CAF91009474C8 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +287,8 @@
 		6E9664A51C7376A2007FC13B /* GameObject */ = {
 			isa = PBXGroup;
 			children = (
+				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
+				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6E5DDDCE1C88907500DD64DD /* Tile */,
 				6E4C7C511C84C31A00B4B7D8 /* Door */,
 				6E9664A91C7376D0007FC13B /* Entity */,
@@ -251,6 +299,8 @@
 		6E9664A91C7376D0007FC13B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				6E18F5B51C9AEBC900E7763F /* Projectile */,
+				6E18F5B01C9AEB8A00E7763F /* Pickup */,
 				6E04F9651C7F219A00D24389 /* Player */,
 				6E5DDDE11C8F11DB00DD64DD /* Enemy */,
 				6E9664AA1C7376DF007FC13B /* Entity.cpp */,
@@ -333,14 +383,12 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6EA7A4AF1C61059C00F9B303 /* Floormaker */,
 				6E5DDDC61C885C2900DD64DD /* ImageManager */,
 				6E9664A51C7376A2007FC13B /* GameObject */,
-				6E9664A61C7376B9007FC13B /* GameObject.cpp */,
-				6E9664A71C7376B9007FC13B /* GameObject.h */,
 				6EA7A5111C61084B00F9B303 /* Sprite */,
 				6EA7A4B11C6105B600F9B303 /* Floor */,
 				6EA7A4B01C6105AC00F9B303 /* Rooms */,
-				6EA7A4AF1C61059C00F9B303 /* Floormaker */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,

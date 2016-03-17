@@ -81,3 +81,13 @@ bool GameObject::collide(GameObject* other){
     }
     return false;
 }
+
+// Does nothing by default
+void GameObject::collisionResponse(GameObject *other)
+{
+    
+}
+
+void GameObject::die(){
+    dead = true;
+}

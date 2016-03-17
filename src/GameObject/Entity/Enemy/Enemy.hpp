@@ -27,5 +27,7 @@ public:
     
     virtual void movePattern();
     virtual void moveNextPattern();
+    
+    virtual void collisionResponse(GameObject* other);
 };
 #endif /* Enemy_hpp */

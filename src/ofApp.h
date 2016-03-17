@@ -33,7 +33,9 @@ class ofApp : public ofBaseApp{
         vector<vector<int>> grid, grid2;
         int lvl;
         int size;
-        Player* ent;
+        Player* player;
+    
+    ofTrueTypeFont* font;
     
 
     
