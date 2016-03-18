@@ -52,17 +52,27 @@ void Room::checkDead(){
                              [](Enemy *_ene){
                                  return !_ene->isAlive();
                              });
-    int i = 0;
     for(auto _ene: enemies){
-        i++;
-//        cout<<i<<": "<<_ene->getHealth()<<" "<<_ene->isAlive()<<endl;
         if(!_ene->isAlive()){
             delete _ene;
             _ene = nullptr;
         }
     }
-//    cout<<"------------------"<<endl;
     enemies.erase(it, enemies.end());
+    
+    /*
+    it = std::remove_if(pickups.begin(), pickups.end(),
+                             [](Pickup *_pu){
+                                 return !_pu->isAlive();
+                             });
+    for(auto _pu: pickups){
+        if(!_pu->isAlive()){
+            delete _pu;
+            _pu = nullptr;
+        }
+    }
+    pickups.erase(it, pickups.end());
+     */
 }
 
 void Room::generateRoom(){

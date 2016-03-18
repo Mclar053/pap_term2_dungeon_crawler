@@ -9,7 +9,7 @@
 #include "Enemy.hpp"
 #include "../Player/Player.h"
 
-Enemy::Enemy(ofVec2f _pos, float _maxVel):Entity(_pos, _maxVel){
+Enemy::Enemy(ofVec2f _pos, float _maxVel, float _maxHealth):Entity(_pos, _maxVel, _maxHealth){
     lastFrame = 0;
     currentMove = 0;
 }

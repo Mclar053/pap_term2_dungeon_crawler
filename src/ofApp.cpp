@@ -11,64 +11,135 @@ void ofApp::setup(){
     currentRoom = floor->getRoom();
     grid = floor->getGrid();
     size = 10;
+    shootLeft = false;
+    shootRight = false;
+    shootUp = false;
+    shootDown = false;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     player->move();
+    
+    if(shootLeft){
+        if(player->fire()){
+            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(), player->getDamage());
+            bullets.push_back(new_bullet);
+            new_bullet->moveLeft();
+            new_bullet = nullptr;
+        }
+    }
+    if(shootRight){
+        if(player->fire()){
+            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+            bullets.push_back(new_bullet);
+            new_bullet->moveRight();
+            new_bullet = nullptr;
+        }
+    }
+    if(shootUp){
+        if(player->fire()){
+            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+            bullets.push_back(new_bullet);
+            new_bullet->moveUp();
+            new_bullet = nullptr;
+        }
+    }
+    if(shootDown){
+        if(player->fire()){
+            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+            cout<<player->getShotSpeed()<<endl;
+            bullets.push_back(new_bullet);
+            new_bullet->moveDown();
+            new_bullet = nullptr;
+        }
+    }
+    
+    
     vector<Door*> doors = currentRoom->getDoors();
     vector<Enemy*> enemies = currentRoom->getEnemies();
+    for(auto _proj: bullets){
+        _proj->move();
+    }
     for(auto &_ene: enemies){
         _ene->moveNextPattern();
         _ene->movePattern();
         _ene->move();
-//        _ene->takeDamage(0.1);
         if(_ene->collide(player)){
             _ene->collisionResponse(player);
+        }
+        for(auto _proj: bullets){
+            if(_ene->collide(_proj)){
+                _ene->collisionResponse(_proj);
+                _proj->collisionResponse(_ene);
+            }
         }
     }
     
     
     for(auto &_door: doors){
         if(_door->collideLeft(player)){
-            player->setPos(ofVec2f(150,375));
+            killBullets();
+            player->setPos(ofVec2f(75,375));
             floor->moveRoom(GridPos(0,1));
             currentRoom = floor->getRoom();
             cout<<"left"<<endl;
         }
         if(_door->collideRight(player)){
-            player->setPos(ofVec2f(650,375));
+            killBullets();
+            player->setPos(ofVec2f(725,375));
             floor->moveRoom(GridPos(0,-1));
             currentRoom = floor->getRoom();
             cout<<"right"<<endl;
         }
         if(_door->collideTop(player)){
-            player->setPos(ofVec2f(400,250));
+            killBullets();
+            player->setPos(ofVec2f(400,175));
             floor->moveRoom(GridPos(1,0));
             currentRoom = floor->getRoom();
             cout<<"top"<<endl;
         }
         if(_door->collideBottom(player)){
-            player->setPos(ofVec2f(400,550));
+            killBullets();
+            player->setPos(ofVec2f(400,575));
             floor->moveRoom(GridPos(-1,0));
             currentRoom = floor->getRoom();
             cout<<"bottom"<<endl;
         }
     }
     
+    checkDead();
     currentRoom->checkDead();
 //    cout<<currentRoom->getFloorPos().x<<" "<<currentRoom->getFloorPos().y<<endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(0);
+    ofBackground(120, 82, 53);
     currentRoom->display();
+    for(auto _proj: bullets){
+        _proj->display();
+    }
     player->display();
     ofPushStyle();
-    ofSetColor(255);
-    font->drawString(to_string(player->getHealth()), ofGetWidth()/2, 40);
+        ofSetColor(255);
+        font->drawString("Health:", 150, 40);
     ofPopStyle();
+    
+    ofPushMatrix();
+        ofTranslate(225, 20);
+        ofPushStyle();
+        ofSetColor(255, 0, 0);
+            ofDrawRectangle(0, 0, 200, 20);
+        ofPopStyle();
+    
+        ofPushStyle();
+            ofSetColor(0, 255, 0);
+            ofDrawRectangle(0, 0, (200*player->getHealth()/player->getMaxHealth()), 20);
+        ofPopStyle();
+    ofPopMatrix();
+    cout<<200*player->getHealth()/player->getMaxHealth()<<endl;
+    
     glPushMatrix();
     glTranslated(20, 20, 0);
     for(int i=0; i<grid[0].size(); i++){
@@ -125,17 +196,32 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key==OF_KEY_LEFT){
+    if(key=='a'){
         player->moveLeft();
     }
-    if(key==OF_KEY_RIGHT){
+    if(key=='d'){
         player->moveRight();
     }
-    if(key==OF_KEY_UP){
+    if(key=='w'){
         player->moveUp();
     }
-    if(key==OF_KEY_DOWN){
+    if(key=='s'){
         player->moveDown();
+    }
+    
+    if(!shootLeft && !shootRight && !shootUp && !shootDown){
+        if(key==OF_KEY_LEFT){
+            shootLeft = true;
+        }
+        if(key==OF_KEY_RIGHT){
+            shootRight = true;
+        }
+        if(key==OF_KEY_UP){
+            shootUp = true;
+        }
+        if(key==OF_KEY_DOWN){
+            shootDown = true;
+        }
     }
     if(key=='.'){
         lvl++;
@@ -159,18 +245,31 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if(key==OF_KEY_LEFT){
+    if(key=='a'){
         player->stopLeft();
     }
-    if(key==OF_KEY_RIGHT){
+    if(key=='d'){
         player->stopRight();
     }
-    if(key==OF_KEY_UP){
+    if(key=='w'){
         player->stopUp();
     }
-    if(key==OF_KEY_DOWN){
+    if(key=='s'){
         player->stopDown();
     }
+    if(key==OF_KEY_LEFT){
+        shootLeft = false;
+    }
+    if(key==OF_KEY_RIGHT){
+        shootRight = false;
+    }
+    if(key==OF_KEY_UP){
+        shootUp = false;
+    }
+    if(key==OF_KEY_DOWN){
+        shootDown = false;
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -220,7 +319,29 @@ void ofApp::mouseReleased(int x, int y, int button){
      }
  };
 
+void ofApp::checkDead(){
+    //Reference: Marco Gilles - ShooterInheritence
+    // remove all dead objects
+    // only do this after the two loops to avoid
+    // invalidated iterators
+    auto it = std::remove_if(bullets.begin(), bullets.end(),
+                             [](Projectile *_proj){
+                                 return !_proj->isAlive();
+                             });
+    for(auto _proj: bullets){
+        if(!_proj->isAlive()){
+            delete _proj;
+            _proj = nullptr;
+        }
+    }
+    bullets.erase(it, bullets.end());
+}
 
+void ofApp::killBullets(){
+    for(auto _proj: bullets){
+        _proj->die();
+    }
+}
 
 
 

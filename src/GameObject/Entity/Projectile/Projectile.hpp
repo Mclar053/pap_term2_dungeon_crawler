@@ -13,9 +13,12 @@
 #include "../Entity.h"
 
 class Projectile: public Entity{
+    float damage;
     
 public:
-    Projectile(ofVec2f _pos, float _maxVel);
+    Projectile(ofVec2f _pos, float _maxVel, float _damage = 1);
+    
+    void collisionResponse(GameObject* other);
 };
 
 #endif /* Projectile_hpp */

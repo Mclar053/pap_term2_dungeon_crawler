@@ -8,7 +8,7 @@
 
 #include "Entity.h"
 
-Entity::Entity(ofVec2f _pos, float _maxVel,int _iFrames):GameObject(_pos),left(false),right(false),up(false),down(false),moving(false),MAX_VEL(_maxVel),direction(1),iFrames(_iFrames),lastFrames(0),health(0){
+Entity::Entity(ofVec2f _pos, float _maxVel,float _maxHealth, int _iFrames):GameObject(_pos),left(false),right(false),up(false),down(false),moving(false),MAX_VEL(_maxVel),direction(1),iFrames(_iFrames),lastFrames(0),health(0),MAX_HEALTH(_maxHealth){
     
 }
 
@@ -155,6 +155,9 @@ void Entity::takeDamage(float d)
 void Entity::addHealth(float h)
 {
     health += h;
+    if(health>MAX_HEALTH){
+        health = MAX_HEALTH;
+    }
 }
 
 //Checks if the entity is still invincible from the last time the entity has been hit

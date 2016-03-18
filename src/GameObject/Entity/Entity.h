@@ -14,6 +14,7 @@
 
 class Entity: public GameObject{
     float MAX_VEL; //Maximum Velocity
+    float MAX_HEALTH; //Maximum Health
     ofVec2f vel; //Velocity
     ofVec2f acc; //Acceleration
     bool moving;
@@ -30,7 +31,7 @@ class Entity: public GameObject{
     int iFrames; //Invincibilty frames
     
 public:
-    Entity(ofVec2f _pos = ofVec2f(200,200), float _maxVel = 5, int _iFrames = 0);
+    Entity(ofVec2f _pos = ofVec2f(200,200), float _maxVel = 5, float _maxHealth = 1, int _iFrames = 0);
     
     //Stops all movement
     void reset();
@@ -84,6 +85,10 @@ public:
     //Temporary
     float getHealth(){
         return health;
+    }
+    
+    float getMaxHealth(){
+        return MAX_HEALTH;
     }
 };
 

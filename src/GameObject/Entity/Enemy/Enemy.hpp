@@ -23,7 +23,7 @@ protected:
     int lastFrame;
     
 public:
-    Enemy(ofVec2f _pos, float _maxVel);
+    Enemy(ofVec2f _pos, float _maxVel,float _maxHealth);
     
     virtual void movePattern();
     virtual void moveNextPattern();

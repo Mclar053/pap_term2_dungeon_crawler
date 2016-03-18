@@ -6,6 +6,7 @@
 #include "Room/Room.h"
 #include "GameObject/Entity/Player/Player.h"
 #include "GameObject/Entity/Enemy/Guy/Guy.hpp"
+#include "GameObject/Entity/Projectile/Projectile.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -27,6 +28,8 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
         void loadImages();
+        void checkDead(); //Checks if projectiles are 'dead' if so then delete object and remove pointer
+        void killBullets();
     
         Floor* floor;
         Room* currentRoom;
@@ -34,6 +37,10 @@ class ofApp : public ofBaseApp{
         int lvl;
         int size;
         Player* player;
+    
+        bool shootLeft, shootRight, shootUp, shootDown;
+    
+        vector<Projectile*> bullets;
     
     ofTrueTypeFont* font;
     

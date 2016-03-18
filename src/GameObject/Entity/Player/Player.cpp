@@ -8,12 +8,28 @@
 
 #include "Player.h"
 
-Player::Player():Entity(ofVec2f(200,200),3,45){
+Player::Player():Entity(ofVec2f(200,200),3,20,45),damage(1),fireRate(1),shotSpeed(5),lastFireFrame(0){
     gameSprite = Sprite("player", 16, 0, 7, 0, 7, 8, 15);
     addHealth(20);
 }
 
-Player::Player(ofVec2f _pos):Entity(_pos,3,45){
+Player::Player(ofVec2f _pos):Entity(_pos,3,20,45),damage(1),fireRate(1),shotSpeed(5),lastFireFrame(0){
     gameSprite = Sprite("player", 16, 0, 7, 0, 7, 8, 15);
     addHealth(20);
+}
+
+bool Player::checkFire(){
+    cout<<lastFireFrame<<" "<<fireRate<<" "<<ofGetFrameNum()<<endl;
+    if(lastFireFrame+fireRate<ofGetFrameNum()){
+        return true;
+    }
+    return false;
+}
+
+bool Player::fire(){
+    if(checkFire()){
+        lastFireFrame = ofGetFrameNum();
+        return true;
+    }
+    return false;
 }
