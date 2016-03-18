@@ -74,5 +74,5 @@ void ImageManager::add(string filename){
     // creates a pair, which is a datastructure for holding two
     // things together. 
     images.insert(make_pair(ofFilePath::getBaseName(filename), img));
-    cout<<ofFilePath::getBaseName(filename)<<endl;
+//    cout<<ofFilePath::getBaseName(filename)<<endl;
 };

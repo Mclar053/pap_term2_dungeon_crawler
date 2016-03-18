@@ -43,6 +43,28 @@ void Room::display(){
     }
 }
 
+void Room::checkDead(){
+    //Reference: Marco Gilles - ShooterInheritence
+    // remove all dead objects
+    // only do this after the two loops to avoid
+    // invalidated iterators
+    auto it = std::remove_if(enemies.begin(), enemies.end(),
+                             [](Enemy *_ene){
+                                 return !_ene->isAlive();
+                             });
+    int i = 0;
+    for(auto _ene: enemies){
+        i++;
+        cout<<i<<": "<<_ene->getHealth()<<" "<<_ene->isAlive()<<endl;
+        if(!_ene->isAlive()){
+            delete _ene;
+            _ene = nullptr;
+        }
+    }
+    cout<<"------------------"<<endl;
+    enemies.erase(it, enemies.end());
+}
+
 void Room::generateRoom(){
     //Creates rooms clockwise from up to left
     for(int i=0; i<roomAdjacency.size(); i++){

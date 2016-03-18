@@ -19,6 +19,7 @@
 #include "../GameObject/Door/Door.hpp"
 #include "../GameObject/Tile/FloorTile/FloorTile.hpp"
 #include "../GameObject/Entity/Enemy/Guy/Guy.hpp"
+#include "../GameObject/Entity/Enemy/Pop/Pop.hpp"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ protected:
     vector<Door*> doors;
     vector<Tile*> tiles;
     vector<Enemy*> enemies;
-//    vector<Pickup*> enemies;
+//    vector<Pickup*> pickups;
     
     bool fighting;
     
@@ -43,6 +44,8 @@ public:
     virtual void subGenerateRoom()=0;
     bool checkEmpty();
     virtual void display();
+    
+    void checkDead(); //Checks if any gameobjects are dead and removes them from their respectibe vectors
     
     vector<Door*> getDoors(){
         return doors;

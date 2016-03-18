@@ -22,6 +22,7 @@ void ofApp::update(){
         _ene->moveNextPattern();
         _ene->movePattern();
         _ene->move();
+        _ene->takeDamage(0.1);
         if(_ene->collide(player)){
             _ene->collisionResponse(player);
         }
@@ -54,6 +55,8 @@ void ofApp::update(){
             cout<<"bottom"<<endl;
         }
     }
+    
+    currentRoom->checkDead();
 //    cout<<currentRoom->getFloorPos().x<<" "<<currentRoom->getFloorPos().y<<endl;
 }
 
@@ -150,7 +153,10 @@ void ofApp::keyPressed(int key){
         currentRoom = floor->getRoom();
         grid = floor->getGrid();
     }
-    cout<<lvl<<endl;
+    if(key=='l'){
+        currentRoom->checkDead();
+    }
+//    cout<<lvl<<endl;
 }
 
 //--------------------------------------------------------------

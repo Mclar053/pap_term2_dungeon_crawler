@@ -13,12 +13,10 @@ Sprite::Sprite(){}
 //Constructor for stationary sprites (Tiles, Weapons)
 Sprite::Sprite(string _baseFile):currentFrame(0){
     createSpriteIM(_baseFile, 1);
-    cout<<"hi"<<endl;
 }
 
 //Constructor for animated sprites (Entity)
 Sprite::Sprite(string _baseFile, int _totalImage, int _upStart, int _upEnd,int _downStart, int _downEnd, int _rightStart, int _rightEnd):upStart(_upStart),upEnd(_upEnd),downStart(_downStart),downEnd(_downEnd),rightStart(_rightStart),rightEnd(_rightEnd){
-        cout<<"hey"<<endl;
     currentFrame  = 0;
     createSpriteIM(_baseFile, _totalImage);
 }
@@ -28,7 +26,6 @@ Sprite::Sprite(string _baseFile, int _totalImage, int _upStart, int _upEnd,int _
 //_totalImage = total number of images for that file base name
 void Sprite::createSpriteIM(string _fileBase, int _totalImage){
     for(int i=0; i<_totalImage; i++){
-        cout<<_fileBase+to_string(i)<<endl;
         images.push_back(ImageManager::get().get(_fileBase+to_string(i)));
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E04F9681C7F21A800D24389 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E04F9661C7F21A800D24389 /* Player.cpp */; };
 		6E18F5BA1C9AF6F400E7763F /* Pop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5B81C9AF6F400E7763F /* Pop.cpp */; };
+		6E18F5BE1C9C0D4A00E7763F /* Projectile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5BC1C9C0D4A00E7763F /* Projectile.cpp */; };
 		6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */; };
 		6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */; };
 		6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2671C6CAFE7009474C8 /* ItemRoom.cpp */; };
@@ -66,6 +67,8 @@
 		6E04F9671C7F21A800D24389 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = GameObject/Entity/Player/Player.h; sourceTree = "<group>"; };
 		6E18F5B81C9AF6F400E7763F /* Pop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pop.cpp; path = GameObject/Entity/Enemy/Pop/Pop.cpp; sourceTree = "<group>"; };
 		6E18F5B91C9AF6F400E7763F /* Pop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Pop.hpp; path = GameObject/Entity/Enemy/Pop/Pop.hpp; sourceTree = "<group>"; };
+		6E18F5BC1C9C0D4A00E7763F /* Projectile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Projectile.cpp; path = GameObject/Entity/Projectile/Projectile.cpp; sourceTree = "<group>"; };
+		6E18F5BD1C9C0D4A00E7763F /* Projectile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Projectile.hpp; path = GameObject/Entity/Projectile/Projectile.hpp; sourceTree = "<group>"; };
 		6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalRoom.cpp; path = Room/NormalRoom/NormalRoom.cpp; sourceTree = "<group>"; };
 		6E2CA2621C6CAFC1009474C8 /* NormalRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalRoom.h; path = Room/NormalRoom/NormalRoom.h; sourceTree = "<group>"; };
 		6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossRoom.cpp; path = Room/BossRoom/BossRoom.cpp; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 		6E18F5B51C9AEBC900E7763F /* Projectile */ = {
 			isa = PBXGroup;
 			children = (
+				6E18F5BC1C9C0D4A00E7763F /* Projectile.cpp */,
+				6E18F5BD1C9C0D4A00E7763F /* Projectile.hpp */,
 			);
 			name = Projectile;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 			files = (
 				6E2CA26C1C6CAFFB009474C8 /* ShopRoom.cpp in Sources */,
 				6E41FD611C594A6F00339344 /* GridPos.cpp in Sources */,
+				6E18F5BE1C9C0D4A00E7763F /* Projectile.cpp in Sources */,
 				6E9664AC1C7376DF007FC13B /* Entity.cpp in Sources */,
 				6E9664A81C7376B9007FC13B /* GameObject.cpp in Sources */,
 				6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */,

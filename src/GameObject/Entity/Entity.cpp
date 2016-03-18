@@ -8,7 +8,7 @@
 
 #include "Entity.h"
 
-Entity::Entity(ofVec2f _pos, float _maxVel,int _iFrames):GameObject(_pos),left(false),right(false),up(false),down(false),moving(false),MAX_VEL(_maxVel),direction(1),iFrames(_iFrames),lastFrames(0){
+Entity::Entity(ofVec2f _pos, float _maxVel,int _iFrames):GameObject(_pos),left(false),right(false),up(false),down(false),moving(false),MAX_VEL(_maxVel),direction(1),iFrames(_iFrames),lastFrames(0),health(0){
     
 }
 

@@ -10,7 +10,7 @@
 
 GameObject::GameObject(){}
 
-GameObject::GameObject(ofVec2f _pos):pos(_pos){
+GameObject::GameObject(ofVec2f _pos):pos(_pos),dead(false){
 
 }
 
