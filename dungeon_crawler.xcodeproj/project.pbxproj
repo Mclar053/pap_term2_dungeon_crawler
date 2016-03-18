@@ -10,6 +10,7 @@
 		6E04F9681C7F21A800D24389 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E04F9661C7F21A800D24389 /* Player.cpp */; };
 		6E18F5BA1C9AF6F400E7763F /* Pop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5B81C9AF6F400E7763F /* Pop.cpp */; };
 		6E18F5BE1C9C0D4A00E7763F /* Projectile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5BC1C9C0D4A00E7763F /* Projectile.cpp */; };
+		6E18F5C41C9C6D4800E7763F /* Pickup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5C21C9C6D4800E7763F /* Pickup.cpp */; };
 		6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */; };
 		6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */; };
 		6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2671C6CAFE7009474C8 /* ItemRoom.cpp */; };
@@ -69,6 +70,8 @@
 		6E18F5B91C9AF6F400E7763F /* Pop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Pop.hpp; path = GameObject/Entity/Enemy/Pop/Pop.hpp; sourceTree = "<group>"; };
 		6E18F5BC1C9C0D4A00E7763F /* Projectile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Projectile.cpp; path = GameObject/Entity/Projectile/Projectile.cpp; sourceTree = "<group>"; };
 		6E18F5BD1C9C0D4A00E7763F /* Projectile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Projectile.hpp; path = GameObject/Entity/Projectile/Projectile.hpp; sourceTree = "<group>"; };
+		6E18F5C21C9C6D4800E7763F /* Pickup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pickup.cpp; path = GameObject/Entity/Pickup/Pickup.cpp; sourceTree = "<group>"; };
+		6E18F5C31C9C6D4800E7763F /* Pickup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Pickup.hpp; path = GameObject/Entity/Pickup/Pickup.hpp; sourceTree = "<group>"; };
 		6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalRoom.cpp; path = Room/NormalRoom/NormalRoom.cpp; sourceTree = "<group>"; };
 		6E2CA2621C6CAFC1009474C8 /* NormalRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalRoom.h; path = Room/NormalRoom/NormalRoom.h; sourceTree = "<group>"; };
 		6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossRoom.cpp; path = Room/BossRoom/BossRoom.cpp; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				6E18F5B31C9AEBA900E7763F /* Speed */,
 				6E18F5B21C9AEB9F00E7763F /* Damage */,
 				6E18F5B11C9AEB9200E7763F /* Health */,
+				6E18F5C21C9C6D4800E7763F /* Pickup.cpp */,
+				6E18F5C31C9C6D4800E7763F /* Pickup.hpp */,
 			);
 			name = Pickup;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */,
 				6E5DDDE41C8F11F600DD64DD /* Enemy.cpp in Sources */,
 				6E3484671C66666900EDB649 /* Room.cpp in Sources */,
+				6E18F5C41C9C6D4800E7763F /* Pickup.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				6E18F5BA1C9AF6F400E7763F /* Pop.cpp in Sources */,
 				6E3484641C66665900EDB649 /* Floor.cpp in Sources */,

@@ -21,8 +21,7 @@ class Player: public Entity{
     bool checkFire(); //Checks if player can fire bullet
     
 public:
-    Player();
-    Player(ofVec2f _pos);
+    Player(ofVec2f _pos = ofVec2f(200,200));
 
     bool fire(); //Allows player to fire bullet at their firerate
     

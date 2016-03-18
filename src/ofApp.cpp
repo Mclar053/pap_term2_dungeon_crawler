@@ -60,6 +60,9 @@ void ofApp::update(){
     vector<Enemy*> enemies = currentRoom->getEnemies();
     for(auto _proj: bullets){
         _proj->move();
+        if(_proj->edgeDetect()){
+            _proj->die();
+        }
     }
     for(auto &_ene: enemies){
         _ene->moveNextPattern();
