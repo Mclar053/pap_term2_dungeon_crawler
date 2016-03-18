@@ -55,13 +55,13 @@ void Room::checkDead(){
     int i = 0;
     for(auto _ene: enemies){
         i++;
-        cout<<i<<": "<<_ene->getHealth()<<" "<<_ene->isAlive()<<endl;
+//        cout<<i<<": "<<_ene->getHealth()<<" "<<_ene->isAlive()<<endl;
         if(!_ene->isAlive()){
             delete _ene;
             _ene = nullptr;
         }
     }
-    cout<<"------------------"<<endl;
+//    cout<<"------------------"<<endl;
     enemies.erase(it, enemies.end());
 }
 

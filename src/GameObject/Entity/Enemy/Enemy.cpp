@@ -54,5 +54,6 @@ void Enemy::collisionResponse(GameObject* other){
     Player* player = dynamic_cast<Player*>(other);
     if(player){
         player->takeDamage(1);
+        this->takeDamage(1);
     }
 }

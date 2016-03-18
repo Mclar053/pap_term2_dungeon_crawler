@@ -22,7 +22,7 @@ void ofApp::update(){
         _ene->moveNextPattern();
         _ene->movePattern();
         _ene->move();
-        _ene->takeDamage(0.1);
+//        _ene->takeDamage(0.1);
         if(_ene->collide(player)){
             _ene->collisionResponse(player);
         }
@@ -62,14 +62,13 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//    ofBackground(255);
+    ofBackground(0);
     currentRoom->display();
     player->display();
     ofPushStyle();
-    ofSetColor(0);
+    ofSetColor(255);
     font->drawString(to_string(player->getHealth()), ofGetWidth()/2, 40);
     ofPopStyle();
-    //**
     glPushMatrix();
     glTranslated(20, 20, 0);
     for(int i=0; i<grid[0].size(); i++){
@@ -122,7 +121,6 @@ void ofApp::draw(){
         }
     }
     glPopMatrix();
-//     **/
 }
 
 //--------------------------------------------------------------
