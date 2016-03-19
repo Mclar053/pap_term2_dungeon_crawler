@@ -22,6 +22,10 @@ void GameObject::display(){
     glPopMatrix();
 }
 
+void GameObject::changeSprite(string _filename){
+    gameSprite = Sprite(_filename);
+}
+
 /*
  Detects if 'other GO' has hit the left side of the 'current GO'
  */

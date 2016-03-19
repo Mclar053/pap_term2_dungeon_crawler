@@ -15,11 +15,19 @@
 //#include "Enemy.h"
 #include "GridPos.h"
 #include "ofMain.h"
+//Tiles
+#include "../GameObject/Tile/FloorTile/FloorTile.hpp"
+#include "../GameObject/Tile/BossFloor/BossFloor.hpp"
+#include "../GameObject/Tile/Trapdoor/TrapDoor.hpp"
+#include "../GameObject/Tile/SpawnFloor/SpawnFloor.hpp"
+
+//Gameobjects
 #include "../GameObject/Entity/Player/Player.h"
 #include "../GameObject/Door/Door.hpp"
-#include "../GameObject/Tile/FloorTile/FloorTile.hpp"
+//Enemies
 #include "../GameObject/Entity/Enemy/Guy/Guy.hpp"
 #include "../GameObject/Entity/Enemy/Pop/Pop.hpp"
+//Pickups
 #include "../GameObject/Entity/Pickup/Health/Health_PU.hpp"
 #include "../GameObject/Entity/Pickup/Speed/Speed_PU.hpp"
 #include "../GameObject/Entity/Pickup/ShotSpeed/ShotSpeed_PU.hpp"
@@ -42,6 +50,7 @@ protected:
     bool fighting;
     
     void addRandomPickup(Enemy* _ene);
+    void checkOpenDoors(); //Checks if the doors should look open
     
 public:
     Room(bool _fight);

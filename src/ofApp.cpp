@@ -89,35 +89,36 @@ void ofApp::update(){
         }
     }
     
-    
-    for(auto &_door: doors){
-        if(_door->collideLeft(player)){
-            killBullets();
-            player->setPos(ofVec2f(75,375));
-            floor->moveRoom(GridPos(0,1));
-            currentRoom = floor->getRoom();
-            cout<<"left"<<endl;
-        }
-        if(_door->collideRight(player)){
-            killBullets();
-            player->setPos(ofVec2f(725,375));
-            floor->moveRoom(GridPos(0,-1));
-            currentRoom = floor->getRoom();
-            cout<<"right"<<endl;
-        }
-        if(_door->collideTop(player)){
-            killBullets();
-            player->setPos(ofVec2f(400,175));
-            floor->moveRoom(GridPos(1,0));
-            currentRoom = floor->getRoom();
-            cout<<"top"<<endl;
-        }
-        if(_door->collideBottom(player)){
-            killBullets();
-            player->setPos(ofVec2f(400,575));
-            floor->moveRoom(GridPos(-1,0));
-            currentRoom = floor->getRoom();
-            cout<<"bottom"<<endl;
+    if(currentRoom->checkEmpty()){
+        for(auto &_door: doors){
+            if(_door->collideLeft(player)){
+                killBullets();
+                player->setPos(ofVec2f(75,375));
+                floor->moveRoom(GridPos(0,1));
+                currentRoom = floor->getRoom();
+                cout<<"left"<<endl;
+            }
+            if(_door->collideRight(player)){
+                killBullets();
+                player->setPos(ofVec2f(725,375));
+                floor->moveRoom(GridPos(0,-1));
+                currentRoom = floor->getRoom();
+                cout<<"right"<<endl;
+            }
+            if(_door->collideTop(player)){
+                killBullets();
+                player->setPos(ofVec2f(400,175));
+                floor->moveRoom(GridPos(1,0));
+                currentRoom = floor->getRoom();
+                cout<<"top"<<endl;
+            }
+            if(_door->collideBottom(player)){
+                killBullets();
+                player->setPos(ofVec2f(400,575));
+                floor->moveRoom(GridPos(-1,0));
+                currentRoom = floor->getRoom();
+                cout<<"bottom"<<endl;
+            }
         }
     }
     
@@ -129,17 +130,23 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(120, 82, 53);
+    
+    //Display all game objects
     currentRoom->display();
     for(auto _proj: bullets){
         _proj->display();
     }
     player->display();
     
+    
+    //Draw all player information
+    //Background - Black
     ofPushStyle();
         ofSetColor(0);
         ofDrawRectangle(0, 0, ofGetWidth(), 100);
     ofPopStyle();
     
+    //Player stats
     ofPushStyle();
         ofSetColor(255);
         font->drawString("Health:", 150, 40);
@@ -149,6 +156,7 @@ void ofApp::draw(){
     font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
     ofPopStyle();
     
+    //Player Health bar
     ofPushMatrix();
         ofTranslate(225, 20);
         ofPushStyle();
@@ -161,8 +169,8 @@ void ofApp::draw(){
             ofDrawRectangle(0, 0, (200*player->getHealth()/player->getMaxHealth()), 20);
         ofPopStyle();
     ofPopMatrix();
-//    cout<<200*player->getHealth()/player->getMaxHealth()<<endl;
     
+    //Floor map
     glPushMatrix();
     glTranslated(10, 5, 0);
     for(int i=0; i<grid[0].size(); i++){
@@ -170,34 +178,6 @@ void ofApp::draw(){
             switch (grid[j][i]) {
                 case 0:
                     break;
-//                case 9:
-//                    ofPushStyle();
-//                    ofSetColor(0);
-//                    ofNoFill();
-//                    ofDrawRectangle(i*size, j*size, size, size);
-//                    ofPopStyle();
-//                    
-//                    ofPushStyle();
-//                    ofSetColor(255, 0, 0);
-//                    ofFill();
-//                    ofDrawRectangle(i*size, j*size, size, size);
-//                    ofPopStyle();
-//                    
-//                    
-//                    break;
-//                case 4:
-//                    ofPushStyle();
-//                    ofSetColor(0);
-//                    ofNoFill();
-//                    ofDrawRectangle(i*size, j*size, size, size);
-//                    ofPopStyle();
-//                    
-//                    ofPushStyle();
-//                    ofSetColor(255, 0, 255);
-//                    ofFill();
-//                    ofDrawRectangle(i*size, j*size, size, size);
-//                    ofPopStyle();
-//                    break;
                 default:
                     ofPushStyle();
                     ofSetColor(0);
@@ -232,6 +212,7 @@ void ofApp::keyPressed(int key){
         player->moveDown();
     }
     
+    //Only lets the player shoot in 1 direction at any 1 time
     if(!shootLeft && !shootRight && !shootUp && !shootDown){
         if(key==OF_KEY_LEFT){
             shootLeft = true;
@@ -246,6 +227,7 @@ void ofApp::keyPressed(int key){
             shootDown = true;
         }
     }
+    
     if(key=='.'){
         lvl++;
         delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB

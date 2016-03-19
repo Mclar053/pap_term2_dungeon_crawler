@@ -65,6 +65,7 @@ void Room::checkDead(){
     }
     enemies.erase(it, enemies.end());
     
+    checkOpenDoors();
     
     auto it2 = std::remove_if(pickups.begin(), pickups.end(),
                              [](Pickup *_pu){
@@ -102,11 +103,6 @@ void Room::generateRoom(){
             doors.push_back(new Door(_pos,i));
         }
     }
-    for(int i=0; i<grid[0].size(); i++){
-        for(int j=0; j<grid.size(); j++){
-            tiles.push_back(new FloorTile(ofVec2f(i*25, j*25)));
-        }
-    }
     
     subGenerateRoom();
 }
@@ -134,6 +130,21 @@ void Room::addRandomPickup(Enemy* _ene){
     }
 }
 
+void Room::checkOpenDoors(){
+    if(this->checkEmpty()){
+        for(auto _door: doors){
+            _door->changeSprite("opendoor");
+        }
+    }
+}
+
+bool Room::checkEmpty(){
+    if(enemies.size()==0){
+        return true;
+    }
+    return false;
+}
+
 Room::~Room(){
     for(auto _d : doors){
         delete _d;
@@ -148,5 +159,10 @@ Room::~Room(){
     for(auto _e: enemies){
         delete _e;
         _e = nullptr;
+    }
+    
+    for(auto _pu: pickups){
+        delete _pu;
+        _pu = nullptr;
     }
 }

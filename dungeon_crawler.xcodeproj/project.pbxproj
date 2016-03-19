@@ -16,6 +16,9 @@
 		6E18F5CF1C9D867B00E7763F /* Speed_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5CD1C9D867B00E7763F /* Speed_PU.cpp */; };
 		6E18F5D21C9D868F00E7763F /* ShotSpeed_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D01C9D868F00E7763F /* ShotSpeed_PU.cpp */; };
 		6E18F5D61C9DA50500E7763F /* FireRate_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D41C9DA50500E7763F /* FireRate_PU.cpp */; };
+		6E18F5DA1C9DF9FF00E7763F /* TrapDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D81C9DF9FF00E7763F /* TrapDoor.cpp */; };
+		6E18F5DE1C9DFC1F00E7763F /* BossFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5DC1C9DFC1F00E7763F /* BossFloor.cpp */; };
+		6E18F5E21C9E000B00E7763F /* SpawnFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5E01C9E000B00E7763F /* SpawnFloor.cpp */; };
 		6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */; };
 		6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */; };
 		6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2671C6CAFE7009474C8 /* ItemRoom.cpp */; };
@@ -87,6 +90,12 @@
 		6E18F5D11C9D868F00E7763F /* ShotSpeed_PU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShotSpeed_PU.hpp; path = GameObject/Entity/Pickup/ShotSpeed/ShotSpeed_PU.hpp; sourceTree = "<group>"; };
 		6E18F5D41C9DA50500E7763F /* FireRate_PU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FireRate_PU.cpp; path = GameObject/Entity/Pickup/FireRate/FireRate_PU.cpp; sourceTree = "<group>"; };
 		6E18F5D51C9DA50500E7763F /* FireRate_PU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FireRate_PU.hpp; path = GameObject/Entity/Pickup/FireRate/FireRate_PU.hpp; sourceTree = "<group>"; };
+		6E18F5D81C9DF9FF00E7763F /* TrapDoor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrapDoor.cpp; path = GameObject/Tile/Trapdoor/TrapDoor.cpp; sourceTree = "<group>"; };
+		6E18F5D91C9DF9FF00E7763F /* TrapDoor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TrapDoor.hpp; path = GameObject/Tile/Trapdoor/TrapDoor.hpp; sourceTree = "<group>"; };
+		6E18F5DC1C9DFC1F00E7763F /* BossFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossFloor.cpp; path = GameObject/Tile/BossFloor/BossFloor.cpp; sourceTree = "<group>"; };
+		6E18F5DD1C9DFC1F00E7763F /* BossFloor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BossFloor.hpp; path = GameObject/Tile/BossFloor/BossFloor.hpp; sourceTree = "<group>"; };
+		6E18F5E01C9E000B00E7763F /* SpawnFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpawnFloor.cpp; path = GameObject/Tile/SpawnFloor/SpawnFloor.cpp; sourceTree = "<group>"; };
+		6E18F5E11C9E000B00E7763F /* SpawnFloor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpawnFloor.hpp; path = GameObject/Tile/SpawnFloor/SpawnFloor.hpp; sourceTree = "<group>"; };
 		6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalRoom.cpp; path = Room/NormalRoom/NormalRoom.cpp; sourceTree = "<group>"; };
 		6E2CA2621C6CAFC1009474C8 /* NormalRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalRoom.h; path = Room/NormalRoom/NormalRoom.h; sourceTree = "<group>"; };
 		6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossRoom.cpp; path = Room/BossRoom/BossRoom.cpp; sourceTree = "<group>"; };
@@ -238,6 +247,33 @@
 			name = FireRate;
 			sourceTree = "<group>";
 		};
+		6E18F5D71C9DF9DD00E7763F /* Trapdoor */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5D81C9DF9FF00E7763F /* TrapDoor.cpp */,
+				6E18F5D91C9DF9FF00E7763F /* TrapDoor.hpp */,
+			);
+			name = Trapdoor;
+			sourceTree = "<group>";
+		};
+		6E18F5DB1C9DFC0900E7763F /* BossFloor */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5DC1C9DFC1F00E7763F /* BossFloor.cpp */,
+				6E18F5DD1C9DFC1F00E7763F /* BossFloor.hpp */,
+			);
+			name = BossFloor;
+			sourceTree = "<group>";
+		};
+		6E18F5DF1C9DFFF100E7763F /* SpawnFloor */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5E01C9E000B00E7763F /* SpawnFloor.cpp */,
+				6E18F5E11C9E000B00E7763F /* SpawnFloor.hpp */,
+			);
+			name = SpawnFloor;
+			sourceTree = "<group>";
+		};
 		6E2CA25D1C6CAF91009474C8 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +340,9 @@
 		6E5DDDCE1C88907500DD64DD /* Tile */ = {
 			isa = PBXGroup;
 			children = (
+				6E18F5DF1C9DFFF100E7763F /* SpawnFloor */,
+				6E18F5DB1C9DFC0900E7763F /* BossFloor */,
+				6E18F5D71C9DF9DD00E7763F /* Trapdoor */,
 				6E5DDDCF1C88907A00DD64DD /* FloorTile */,
 				6E5DDDD01C88CDE100DD64DD /* Tile.cpp */,
 				6E5DDDD11C88CDE100DD64DD /* Tile.hpp */,
@@ -552,11 +591,13 @@
 				6E2CA26C1C6CAFFB009474C8 /* ShopRoom.cpp in Sources */,
 				6E18F5CF1C9D867B00E7763F /* Speed_PU.cpp in Sources */,
 				6E18F5C91C9D864A00E7763F /* Health_PU.cpp in Sources */,
+				6E18F5DA1C9DF9FF00E7763F /* TrapDoor.cpp in Sources */,
 				6E41FD611C594A6F00339344 /* GridPos.cpp in Sources */,
 				6E18F5BE1C9C0D4A00E7763F /* Projectile.cpp in Sources */,
 				6E9664AC1C7376DF007FC13B /* Entity.cpp in Sources */,
 				6E9664A81C7376B9007FC13B /* GameObject.cpp in Sources */,
 				6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */,
+				6E18F5E21C9E000B00E7763F /* SpawnFloor.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				6E5DDDD51C88CDFA00DD64DD /* FloorTile.cpp in Sources */,
 				6E4C7C4E1C84A09200B4B7D8 /* SpawnRoom.cpp in Sources */,
@@ -573,6 +614,7 @@
 				6E95FC9B1C84D1BF003F8E4B /* Door.cpp in Sources */,
 				6E5DDDC91C885C3900DD64DD /* ImageManager.cpp in Sources */,
 				6E5DDDE81C8F1C4900DD64DD /* Guy.cpp in Sources */,
+				6E18F5DE1C9DFC1F00E7763F /* BossFloor.cpp in Sources */,
 				6E18F5D61C9DA50500E7763F /* FireRate_PU.cpp in Sources */,
 				6E18F5CC1C9D866600E7763F /* Damage_PU.cpp in Sources */,
 				6EA7A5141C61084B00F9B303 /* Sprite.cpp in Sources */,

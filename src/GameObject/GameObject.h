@@ -53,6 +53,8 @@ public:
     //Sets dead bool to true
     virtual void die();
     
+    void changeSprite(string _fileName);
+    
     //Checks if object is alive
     bool isAlive(){
         return !dead;

@@ -14,25 +14,13 @@ SpawnRoom::SpawnRoom():Room(false){
 
 SpawnRoom::SpawnRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down):Room(false,_fPos,_left,_up,_right,_down){
     generateRoom();
-}
-
-void SpawnRoom::display(){
-    for(int i=0; i<grid[0].size(); i++){
-        for(int j=0; j<grid.size(); j++){
-            glPushMatrix();
-            glTranslated(50+i*25,150+j*25, 0);
-            ofPushStyle();
-            ofSetColor(0, 255, 0); //Green
-            ofDrawRectangle(0,0,25,25);
-            ofPopStyle();
-            glPopMatrix();
-        }
-    }
-    for(auto _door: doors){
-        _door->display();
-    }
+    checkOpenDoors();
 }
 
 void SpawnRoom::subGenerateRoom(){
-    
+    for(int i=0; i<grid[0].size(); i++){
+        for(int j=0; j<grid.size(); j++){
+            tiles.push_back(new SpawnFloor(ofVec2f(i*25, j*25)));
+        }
+    }
 }
