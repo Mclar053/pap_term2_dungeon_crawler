@@ -37,6 +37,7 @@ class ofApp : public ofBaseApp{
         int lvl;
         int size;
         Player* player;
+        bool nextFloor;
     
         bool shootLeft, shootRight, shootUp, shootDown;
     

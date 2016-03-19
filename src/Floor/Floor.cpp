@@ -101,11 +101,15 @@ Room* Floor::getRoom(){
 void Floor::moveRoom(GridPos _pos){
     cout<<"Old: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
     currentGridPos.add(_pos);
+    int oldRoom = currentRoom;
     cout<<"Current: "<<currentGridPos.x<<" "<<currentGridPos.y<<endl;
     for(int i=0; i<rooms.size(); i++){
         if(rooms[i]->getFloorPos().isEqual(currentGridPos)){
             currentRoom=i;
         }
+    }
+    if(oldRoom==currentRoom){
+        currentGridPos.sub(_pos);
     }
 }
 

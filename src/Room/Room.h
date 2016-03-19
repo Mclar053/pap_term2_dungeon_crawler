@@ -27,6 +27,7 @@
 //Enemies
 #include "../GameObject/Entity/Enemy/Guy/Guy.hpp"
 #include "../GameObject/Entity/Enemy/Pop/Pop.hpp"
+#include "../GameObject/Entity/Enemy/Whizz/Whizz.hpp"
 //Pickups
 #include "../GameObject/Entity/Pickup/Health/Health_PU.hpp"
 #include "../GameObject/Entity/Pickup/Speed/Speed_PU.hpp"
@@ -73,6 +74,10 @@ public:
     
     vector<Pickup*> getPickups(){
         return pickups;
+    };
+    
+    vector<Tile*> getTiles(){
+        return tiles;
     };
     
     GridPos getFloorPos(){

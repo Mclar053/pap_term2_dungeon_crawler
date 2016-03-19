@@ -38,10 +38,10 @@ void BossRoom::subGenerateRoom(){
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
             if(i==floor(grid[0].size()/2) && j==3){
-                tiles.push_back(new Trapdoor(ofVec2f(i*25, j*25)));
+                tiles.push_back(new Trapdoor(ofVec2f(62.5+i*25, 162.5+j*25)));
             }
             else{
-                tiles.push_back(new BossFloor(ofVec2f(i*25, j*25)));
+                tiles.push_back(new BossFloor(ofVec2f(62.5+i*25, 162.5+j*25)));
             }
         }
     }

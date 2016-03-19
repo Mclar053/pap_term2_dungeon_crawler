@@ -19,6 +19,7 @@
 		6E18F5DA1C9DF9FF00E7763F /* TrapDoor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D81C9DF9FF00E7763F /* TrapDoor.cpp */; };
 		6E18F5DE1C9DFC1F00E7763F /* BossFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5DC1C9DFC1F00E7763F /* BossFloor.cpp */; };
 		6E18F5E21C9E000B00E7763F /* SpawnFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5E01C9E000B00E7763F /* SpawnFloor.cpp */; };
+		6E18F5E61C9E16D100E7763F /* Whizz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5E41C9E16D100E7763F /* Whizz.cpp */; };
 		6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */; };
 		6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */; };
 		6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2671C6CAFE7009474C8 /* ItemRoom.cpp */; };
@@ -96,6 +97,8 @@
 		6E18F5DD1C9DFC1F00E7763F /* BossFloor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BossFloor.hpp; path = GameObject/Tile/BossFloor/BossFloor.hpp; sourceTree = "<group>"; };
 		6E18F5E01C9E000B00E7763F /* SpawnFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpawnFloor.cpp; path = GameObject/Tile/SpawnFloor/SpawnFloor.cpp; sourceTree = "<group>"; };
 		6E18F5E11C9E000B00E7763F /* SpawnFloor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpawnFloor.hpp; path = GameObject/Tile/SpawnFloor/SpawnFloor.hpp; sourceTree = "<group>"; };
+		6E18F5E41C9E16D100E7763F /* Whizz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Whizz.cpp; path = GameObject/Entity/Enemy/Whizz/Whizz.cpp; sourceTree = "<group>"; };
+		6E18F5E51C9E16D100E7763F /* Whizz.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Whizz.hpp; path = GameObject/Entity/Enemy/Whizz/Whizz.hpp; sourceTree = "<group>"; };
 		6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalRoom.cpp; path = Room/NormalRoom/NormalRoom.cpp; sourceTree = "<group>"; };
 		6E2CA2621C6CAFC1009474C8 /* NormalRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalRoom.h; path = Room/NormalRoom/NormalRoom.h; sourceTree = "<group>"; };
 		6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossRoom.cpp; path = Room/BossRoom/BossRoom.cpp; sourceTree = "<group>"; };
@@ -274,6 +277,15 @@
 			name = SpawnFloor;
 			sourceTree = "<group>";
 		};
+		6E18F5E31C9E16AF00E7763F /* Whizz */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5E41C9E16D100E7763F /* Whizz.cpp */,
+				6E18F5E51C9E16D100E7763F /* Whizz.hpp */,
+			);
+			name = Whizz;
+			sourceTree = "<group>";
+		};
 		6E2CA25D1C6CAF91009474C8 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +374,7 @@
 		6E5DDDE11C8F11DB00DD64DD /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
+				6E18F5E31C9E16AF00E7763F /* Whizz */,
 				6E18F5B71C9AF6B900E7763F /* Pop */,
 				6E5DDDE51C8F178E00DD64DD /* Guy */,
 				6E5DDDE21C8F11F600DD64DD /* Enemy.cpp */,
@@ -599,6 +612,7 @@
 				6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */,
 				6E18F5E21C9E000B00E7763F /* SpawnFloor.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				6E18F5E61C9E16D100E7763F /* Whizz.cpp in Sources */,
 				6E5DDDD51C88CDFA00DD64DD /* FloorTile.cpp in Sources */,
 				6E4C7C4E1C84A09200B4B7D8 /* SpawnRoom.cpp in Sources */,
 				6E41FD5E1C594A6500339344 /* Floormaker.cpp in Sources */,

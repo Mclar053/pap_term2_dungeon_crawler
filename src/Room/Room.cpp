@@ -27,7 +27,6 @@ void Room::display(){
     //Display all tiles
     for(auto _tile: tiles){
         glPushMatrix();
-        glTranslated(62.5,162.5, 0);
         _tile->display();
         glPopMatrix();
     }

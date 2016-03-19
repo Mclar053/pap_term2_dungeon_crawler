@@ -18,6 +18,7 @@ void ofApp::setup(){
     shootRight = false;
     shootUp = false;
     shootDown = false;
+    nextFloor = false;
 }
 
 //--------------------------------------------------------------
@@ -61,6 +62,7 @@ void ofApp::update(){
     vector<Door*> doors = currentRoom->getDoors();
     vector<Enemy*> enemies = currentRoom->getEnemies();
     vector<Pickup*> pickups = currentRoom->getPickups();
+    vector<Tile*> tiles = currentRoom->getTiles();
     for(auto _proj: bullets){
         _proj->move();
         if(_proj->edgeDetect()){
@@ -120,10 +122,31 @@ void ofApp::update(){
                 cout<<"bottom"<<endl;
             }
         }
+        
+        for(auto &_tile: tiles){
+            Trapdoor* _trapdoor = dynamic_cast<Trapdoor*>(_tile);
+            if(_trapdoor){
+                cout<<"trap"<<endl;
+                if(_trapdoor->collide(player)){
+                    cout<<"trapCollide"<<endl;
+                    nextFloor = true;
+                }
+            }
+        }
     }
     
     checkDead();
     currentRoom->checkDead();
+    
+    //Move to next floor
+    if(nextFloor){
+        lvl++;
+        delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
+        floor = new Floor(lvl);
+        currentRoom = floor->getRoom();
+        grid = floor->getGrid();
+        nextFloor = false;
+    }
 //    cout<<currentRoom->getFloorPos().x<<" "<<currentRoom->getFloorPos().y<<endl;
 }
 
@@ -154,6 +177,7 @@ void ofApp::draw(){
     font->drawString("Fire Rate: "+to_string(100/player->getFireRate()), 450, 40);
     font->drawString("Speed: "+to_string(player->getMaxSpeed()), 450, 60);
     font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
+    font->drawString("Floor: "+to_string(lvl), 150, 70);
     ofPopStyle();
     
     //Player Health bar

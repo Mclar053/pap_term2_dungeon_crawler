@@ -15,6 +15,11 @@ void GridPos::add(GridPos _x){
     y+=_x.y;
 }
 
+void GridPos::sub(GridPos _x){
+    x-=_x.x;
+    y-=_x.y;
+}
+
 void GridPos::set(int _x, int _y){
     x=_x;
     y=_y;

@@ -16,6 +16,7 @@ public:
     GridPos(int _x=0, int _y=0);
     int x,y;
     void add(GridPos _x);
+    void sub(GridPos _x);
     void set(int _x, int _y);
     bool isEqual(GridPos _gridpos);
 };

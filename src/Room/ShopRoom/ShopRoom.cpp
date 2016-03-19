@@ -37,7 +37,7 @@ ShopRoom::ShopRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right,
 void ShopRoom::subGenerateRoom(){
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
-            tiles.push_back(new FloorTile(ofVec2f(i*25, j*25)));
+            tiles.push_back(new FloorTile(ofVec2f(62.5+i*25, 162.5+j*25)));
         }
     }
 }
