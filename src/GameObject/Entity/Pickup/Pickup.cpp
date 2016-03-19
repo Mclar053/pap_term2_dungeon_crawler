@@ -9,5 +9,5 @@
 #include "Pickup.hpp"
 
 Pickup::Pickup(ofVec2f _pos):Entity(_pos){
-    
+    gameSprite = Sprite("shotSpeed_pu");
 }

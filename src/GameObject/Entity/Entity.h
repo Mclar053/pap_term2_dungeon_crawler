@@ -13,6 +13,8 @@
 #include "../GameObject.h"
 
 class Entity: public GameObject{
+
+protected:
     float MAX_VEL; //Maximum Velocity
     float MAX_HEALTH; //Maximum Health
     ofVec2f vel; //Velocity

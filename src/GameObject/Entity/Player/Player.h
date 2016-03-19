@@ -25,6 +25,11 @@ public:
 
     bool fire(); //Allows player to fire bullet at their firerate
     
+    void changeFireRate(float _fr);
+    void changeShotSpeed(float _shotSp);
+    void changeDamage(float _dmg);
+    void changeSpeed(float _sp);
+    
     //Returns firerate
     float getFireRate(){
         return fireRate;

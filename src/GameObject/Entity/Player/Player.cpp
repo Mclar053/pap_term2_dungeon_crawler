@@ -28,3 +28,19 @@ bool Player::fire(){
     }
     return false;
 }
+
+void Player::changeFireRate(float _fr){
+    fireRate-=_fr; //Negative as lower the fireRate variable, the faster the reload time is
+}
+
+void Player::changeShotSpeed(float _shotSp){
+    shotSpeed+=_shotSp;
+}
+
+void Player::changeDamage(float _dmg){
+    damage+=_dmg;
+}
+
+void Player::changeSpeed(float _sp){
+    MAX_VEL+=_sp;
+}
