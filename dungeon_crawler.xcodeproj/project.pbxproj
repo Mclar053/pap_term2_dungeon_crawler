@@ -15,6 +15,7 @@
 		6E18F5CC1C9D866600E7763F /* Damage_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5CA1C9D866600E7763F /* Damage_PU.cpp */; };
 		6E18F5CF1C9D867B00E7763F /* Speed_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5CD1C9D867B00E7763F /* Speed_PU.cpp */; };
 		6E18F5D21C9D868F00E7763F /* ShotSpeed_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D01C9D868F00E7763F /* ShotSpeed_PU.cpp */; };
+		6E18F5D61C9DA50500E7763F /* FireRate_PU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E18F5D41C9DA50500E7763F /* FireRate_PU.cpp */; };
 		6E2CA2631C6CAFC1009474C8 /* NormalRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */; };
 		6E2CA2661C6CAFD5009474C8 /* BossRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */; };
 		6E2CA2691C6CAFE7009474C8 /* ItemRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA2671C6CAFE7009474C8 /* ItemRoom.cpp */; };
@@ -84,6 +85,8 @@
 		6E18F5CE1C9D867B00E7763F /* Speed_PU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Speed_PU.hpp; path = GameObject/Entity/Pickup/Speed/Speed_PU.hpp; sourceTree = "<group>"; };
 		6E18F5D01C9D868F00E7763F /* ShotSpeed_PU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShotSpeed_PU.cpp; path = GameObject/Entity/Pickup/ShotSpeed/ShotSpeed_PU.cpp; sourceTree = "<group>"; };
 		6E18F5D11C9D868F00E7763F /* ShotSpeed_PU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShotSpeed_PU.hpp; path = GameObject/Entity/Pickup/ShotSpeed/ShotSpeed_PU.hpp; sourceTree = "<group>"; };
+		6E18F5D41C9DA50500E7763F /* FireRate_PU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FireRate_PU.cpp; path = GameObject/Entity/Pickup/FireRate/FireRate_PU.cpp; sourceTree = "<group>"; };
+		6E18F5D51C9DA50500E7763F /* FireRate_PU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FireRate_PU.hpp; path = GameObject/Entity/Pickup/FireRate/FireRate_PU.hpp; sourceTree = "<group>"; };
 		6E2CA2611C6CAFC1009474C8 /* NormalRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalRoom.cpp; path = Room/NormalRoom/NormalRoom.cpp; sourceTree = "<group>"; };
 		6E2CA2621C6CAFC1009474C8 /* NormalRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalRoom.h; path = Room/NormalRoom/NormalRoom.h; sourceTree = "<group>"; };
 		6E2CA2641C6CAFD5009474C8 /* BossRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BossRoom.cpp; path = Room/BossRoom/BossRoom.cpp; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		6E18F5B01C9AEB8A00E7763F /* Pickup */ = {
 			isa = PBXGroup;
 			children = (
+				6E18F5D31C9DA4E600E7763F /* FireRate */,
 				6E18F5B41C9AEBAD00E7763F /* ShotSpeed */,
 				6E18F5B31C9AEBA900E7763F /* Speed */,
 				6E18F5B21C9AEB9F00E7763F /* Damage */,
@@ -223,6 +227,15 @@
 				6E18F5B91C9AF6F400E7763F /* Pop.hpp */,
 			);
 			name = Pop;
+			sourceTree = "<group>";
+		};
+		6E18F5D31C9DA4E600E7763F /* FireRate */ = {
+			isa = PBXGroup;
+			children = (
+				6E18F5D41C9DA50500E7763F /* FireRate_PU.cpp */,
+				6E18F5D51C9DA50500E7763F /* FireRate_PU.hpp */,
+			);
+			name = FireRate;
 			sourceTree = "<group>";
 		};
 		6E2CA25D1C6CAF91009474C8 /* Normal */ = {
@@ -560,6 +573,7 @@
 				6E95FC9B1C84D1BF003F8E4B /* Door.cpp in Sources */,
 				6E5DDDC91C885C3900DD64DD /* ImageManager.cpp in Sources */,
 				6E5DDDE81C8F1C4900DD64DD /* Guy.cpp in Sources */,
+				6E18F5D61C9DA50500E7763F /* FireRate_PU.cpp in Sources */,
 				6E18F5CC1C9D866600E7763F /* Damage_PU.cpp in Sources */,
 				6EA7A5141C61084B00F9B303 /* Sprite.cpp in Sources */,
 				6E04F9681C7F21A800D24389 /* Player.cpp in Sources */,

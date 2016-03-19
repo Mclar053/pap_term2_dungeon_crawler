@@ -92,6 +92,10 @@ public:
     float getMaxHealth(){
         return MAX_HEALTH;
     }
+    
+    float getMaxSpeed(){
+        return MAX_VEL;
+    }
 };
 
 #endif /* defined(__dungeon_crawler__Entity__) */

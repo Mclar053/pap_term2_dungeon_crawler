@@ -1,22 +1,22 @@
 //
-//  Speed_PU.hpp
+//  FireRate_PU.hpp
 //  dungeon_crawler
 //
 //  Created by Matthew Clark on 19/03/2016.
 //
 //
 
-#ifndef Speed_PU_hpp
-#define Speed_PU_hpp
+#ifndef FireRate_PU_hpp
+#define FireRate_PU_hpp
 
 #include <stdio.h>
 #include "../Pickup.hpp"
 
-class Pickup_Speed: public Pickup{
+class Pickup_FireRate: public Pickup{
     
 public:
-    Pickup_Speed(ofVec2f _pos, float _val);
+    Pickup_FireRate(ofVec2f _pos, float _val);
     
     void collisionResponse(GameObject* other);
 };
-#endif /* Speed_PU_hpp */
+#endif /* FireRate_PU_hpp */

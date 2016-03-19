@@ -20,6 +20,11 @@
 #include "../GameObject/Tile/FloorTile/FloorTile.hpp"
 #include "../GameObject/Entity/Enemy/Guy/Guy.hpp"
 #include "../GameObject/Entity/Enemy/Pop/Pop.hpp"
+#include "../GameObject/Entity/Pickup/Health/Health_PU.hpp"
+#include "../GameObject/Entity/Pickup/Speed/Speed_PU.hpp"
+#include "../GameObject/Entity/Pickup/ShotSpeed/ShotSpeed_PU.hpp"
+#include "../GameObject/Entity/Pickup/Damage/Damage_PU.hpp"
+#include "../GameObject/Entity/Pickup/FireRate/FireRate_PU.hpp"
 
 using namespace std;
 
@@ -32,9 +37,11 @@ protected:
     vector<Door*> doors;
     vector<Tile*> tiles;
     vector<Enemy*> enemies;
-//    vector<Pickup*> pickups;
+    vector<Pickup*> pickups;
     
     bool fighting;
+    
+    void addRandomPickup(Enemy* _ene);
     
 public:
     Room(bool _fight);
@@ -53,6 +60,10 @@ public:
     
     vector<Enemy*> getEnemies(){
         return enemies;
+    };
+    
+    vector<Pickup*> getPickups(){
+        return pickups;
     };
     
     GridPos getFloorPos(){

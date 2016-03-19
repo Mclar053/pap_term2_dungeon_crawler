@@ -8,6 +8,4 @@
 
 #include "Pickup.hpp"
 
-Pickup::Pickup(ofVec2f _pos):Entity(_pos){
-    gameSprite = Sprite("shotSpeed_pu");
-}
+Pickup::Pickup(ofVec2f _pos, float _val):Entity(_pos),value(_val){}

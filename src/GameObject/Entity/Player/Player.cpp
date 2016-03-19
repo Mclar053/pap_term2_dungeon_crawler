@@ -14,7 +14,6 @@ Player::Player(ofVec2f _pos):Entity(_pos,3,20,45),damage(1),fireRate(30),shotSpe
 }
 
 bool Player::checkFire(){
-    cout<<lastFireFrame<<" "<<fireRate<<" "<<ofGetFrameNum()<<endl;
     if(lastFireFrame+fireRate<ofGetFrameNum()){
         return true;
     }
@@ -34,13 +33,16 @@ void Player::changeFireRate(float _fr){
 }
 
 void Player::changeShotSpeed(float _shotSp){
-    shotSpeed+=_shotSp;
+    if(shotSpeed+_shotSp>0.5)
+        shotSpeed+=_shotSp;
 }
 
 void Player::changeDamage(float _dmg){
-    damage+=_dmg;
+    if(damage+_dmg>1)
+        damage+=_dmg;
 }
 
 void Player::changeSpeed(float _sp){
-    MAX_VEL+=_sp;
+    if(MAX_VEL+_sp>0.5)
+        MAX_VEL+=_sp;
 }

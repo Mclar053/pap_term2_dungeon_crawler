@@ -48,7 +48,6 @@ void ofApp::update(){
     if(shootDown){
         if(player->fire()){
             Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
-            cout<<player->getShotSpeed()<<endl;
             bullets.push_back(new_bullet);
             new_bullet->moveDown();
             new_bullet = nullptr;
@@ -58,6 +57,7 @@ void ofApp::update(){
     
     vector<Door*> doors = currentRoom->getDoors();
     vector<Enemy*> enemies = currentRoom->getEnemies();
+    vector<Pickup*> pickups = currentRoom->getPickups();
     for(auto _proj: bullets){
         _proj->move();
         if(_proj->edgeDetect()){
@@ -76,6 +76,13 @@ void ofApp::update(){
                 _ene->collisionResponse(_proj);
                 _proj->collisionResponse(_ene);
             }
+        }
+    }
+    
+    for(auto &_pu: pickups){
+        if(_pu->collide(player)){
+            _pu->collisionResponse(player);
+            cout<<_pu->getValue()<<endl;
         }
     }
     
@@ -127,6 +134,10 @@ void ofApp::draw(){
     ofPushStyle();
         ofSetColor(255);
         font->drawString("Health:", 150, 40);
+        font->drawString("Damage: "+to_string(player->getDamage()), 450, 20);
+    font->drawString("Fire Rate: "+to_string(player->getFireRate()), 450, 40);
+    font->drawString("Speed: "+to_string(player->getMaxSpeed()), 450, 60);
+    font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
     ofPopStyle();
     
     ofPushMatrix();
@@ -141,7 +152,7 @@ void ofApp::draw(){
             ofDrawRectangle(0, 0, (200*player->getHealth()/player->getMaxHealth()), 20);
         ofPopStyle();
     ofPopMatrix();
-    cout<<200*player->getHealth()/player->getMaxHealth()<<endl;
+//    cout<<200*player->getHealth()/player->getMaxHealth()<<endl;
     
     glPushMatrix();
     glTranslated(20, 20, 0);

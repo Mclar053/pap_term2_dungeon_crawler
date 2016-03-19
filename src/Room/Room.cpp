@@ -37,6 +37,10 @@ void Room::display(){
         _door->display();
     }
     
+    for(auto _pu: pickups){
+        _pu->display();
+    }
+    
     //Display all entities
     for(auto _ene: enemies){
         _ene->display();
@@ -54,14 +58,15 @@ void Room::checkDead(){
                              });
     for(auto _ene: enemies){
         if(!_ene->isAlive()){
+            addRandomPickup(_ene);
             delete _ene;
             _ene = nullptr;
         }
     }
     enemies.erase(it, enemies.end());
     
-    /*
-    it = std::remove_if(pickups.begin(), pickups.end(),
+    
+    auto it2 = std::remove_if(pickups.begin(), pickups.end(),
                              [](Pickup *_pu){
                                  return !_pu->isAlive();
                              });
@@ -71,8 +76,8 @@ void Room::checkDead(){
             _pu = nullptr;
         }
     }
-    pickups.erase(it, pickups.end());
-     */
+    pickups.erase(it2, pickups.end());
+    
 }
 
 void Room::generateRoom(){
@@ -104,6 +109,29 @@ void Room::generateRoom(){
     }
     
     subGenerateRoom();
+}
+
+void Room::addRandomPickup(Enemy* _ene){
+    int randNum = ceil(ofRandom(0,6));
+    cout<<"Random: "<<randNum<<endl;
+    
+    switch(randNum){
+        case 1:
+            pickups.push_back(new Pickup_Health(_ene->getPos(),ceil(ofRandom(-1,2))));
+            break;
+        case 2:
+            pickups.push_back(new Pickup_Damage(_ene->getPos(),ofRandom(-3,2)));
+            break;
+        case 3:
+            pickups.push_back(new Pickup_ShotSpeed(_ene->getPos(),ofRandom(-3,2)));
+            break;
+        case 4:
+            pickups.push_back(new Pickup_FireRate(_ene->getPos(),ofRandom(-10,10)));
+            break;
+        default:
+            pickups.push_back(new Pickup_Speed(_ene->getPos(),ofRandom(-3,3)));
+            break;
+    }
 }
 
 Room::~Room(){

@@ -13,9 +13,13 @@
 #include "../Entity.h"
 
 class Pickup: public Entity{
-    
+    float value; //Value to affect player
 public:
-    Pickup(ofVec2f _pos);
+    Pickup(ofVec2f _pos, float _val);
+    
+    float getValue(){
+        return value;
+    }
 };
 
 #endif /* Pickup_hpp */
