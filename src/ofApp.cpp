@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    music.load("music/crawler2.mp3");
+    music.setLoop(true);
+    music.play();
     font = new ofTrueTypeFont();
     font->load(OF_TTF_SANS, 18);
     loadImages();
@@ -10,7 +13,7 @@ void ofApp::setup(){
     floor = new Floor(lvl);
     currentRoom = floor->getRoom();
     grid = floor->getGrid();
-    size = 10;
+    size = 7;
     shootLeft = false;
     shootRight = false;
     shootUp = false;
@@ -131,11 +134,17 @@ void ofApp::draw(){
         _proj->display();
     }
     player->display();
+    
+    ofPushStyle();
+        ofSetColor(0);
+        ofDrawRectangle(0, 0, ofGetWidth(), 100);
+    ofPopStyle();
+    
     ofPushStyle();
         ofSetColor(255);
         font->drawString("Health:", 150, 40);
         font->drawString("Damage: "+to_string(player->getDamage()), 450, 20);
-    font->drawString("Fire Rate: "+to_string(player->getFireRate()), 450, 40);
+    font->drawString("Fire Rate: "+to_string(100/player->getFireRate()), 450, 40);
     font->drawString("Speed: "+to_string(player->getMaxSpeed()), 450, 60);
     font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
     ofPopStyle();
@@ -155,40 +164,40 @@ void ofApp::draw(){
 //    cout<<200*player->getHealth()/player->getMaxHealth()<<endl;
     
     glPushMatrix();
-    glTranslated(20, 20, 0);
+    glTranslated(10, 5, 0);
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
             switch (grid[j][i]) {
                 case 0:
                     break;
-                case 9:
-                    ofPushStyle();
-                    ofSetColor(0);
-                    ofNoFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    
-                    ofPushStyle();
-                    ofSetColor(255, 0, 0);
-                    ofFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    
-                    
-                    break;
-                case 4:
-                    ofPushStyle();
-                    ofSetColor(0);
-                    ofNoFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    
-                    ofPushStyle();
-                    ofSetColor(255, 0, 255);
-                    ofFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    break;
+//                case 9:
+//                    ofPushStyle();
+//                    ofSetColor(0);
+//                    ofNoFill();
+//                    ofDrawRectangle(i*size, j*size, size, size);
+//                    ofPopStyle();
+//                    
+//                    ofPushStyle();
+//                    ofSetColor(255, 0, 0);
+//                    ofFill();
+//                    ofDrawRectangle(i*size, j*size, size, size);
+//                    ofPopStyle();
+//                    
+//                    
+//                    break;
+//                case 4:
+//                    ofPushStyle();
+//                    ofSetColor(0);
+//                    ofNoFill();
+//                    ofDrawRectangle(i*size, j*size, size, size);
+//                    ofPopStyle();
+//                    
+//                    ofPushStyle();
+//                    ofSetColor(255, 0, 255);
+//                    ofFill();
+//                    ofDrawRectangle(i*size, j*size, size, size);
+//                    ofPopStyle();
+//                    break;
                 default:
                     ofPushStyle();
                     ofSetColor(0);

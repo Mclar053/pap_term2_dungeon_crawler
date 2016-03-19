@@ -43,6 +43,7 @@ class ofApp : public ofBaseApp{
         vector<Projectile*> bullets;
     
     ofTrueTypeFont* font;
+    ofSoundPlayer music;
     
 
     
