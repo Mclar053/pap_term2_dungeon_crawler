@@ -52,6 +52,7 @@ protected:
     
     void addRandomPickup(Enemy* _ene);
     void checkOpenDoors(); //Checks if the doors should look open
+    virtual void generateEnemies();
     
 public:
     Room(bool _fight);

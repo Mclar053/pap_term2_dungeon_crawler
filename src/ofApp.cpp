@@ -87,7 +87,6 @@ void ofApp::update(){
     for(auto &_pu: pickups){
         if(_pu->collide(player)){
             _pu->collisionResponse(player);
-            cout<<_pu->getValue()<<endl;
         }
     }
     

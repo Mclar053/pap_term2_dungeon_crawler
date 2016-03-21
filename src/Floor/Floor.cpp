@@ -73,7 +73,7 @@ vector<bool> Floor::checkAdjacencies(int _i, int _j){
     }
     else {_adjacent.push_back(false);}
     
-    if(_i+1>=0){
+    if(_i+1<grid[0].size()){
         if(grid[_j][_i+1]!=0) _adjacent.push_back(true);
         else{ _adjacent.push_back(false);}
     }
@@ -85,7 +85,7 @@ vector<bool> Floor::checkAdjacencies(int _i, int _j){
     }
     else {_adjacent.push_back(false);}
     
-    if(_i-1<grid[0].size()){
+    if(_i-1>=0){
         if(grid[_j][_i-1]!=0) _adjacent.push_back(true);
         else{ _adjacent.push_back(false);}
     }

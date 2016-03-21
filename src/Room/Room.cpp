@@ -115,16 +115,16 @@ void Room::addRandomPickup(Enemy* _ene){
             pickups.push_back(new Pickup_Health(_ene->getPos(),ceil(ofRandom(-1,2))));
             break;
         case 2:
-            pickups.push_back(new Pickup_Damage(_ene->getPos(),ofRandom(-3,2)));
+            pickups.push_back(new Pickup_Damage(_ene->getPos(),ofRandom(-1,1)));
             break;
         case 3:
-            pickups.push_back(new Pickup_ShotSpeed(_ene->getPos(),ofRandom(-3,2)));
+            pickups.push_back(new Pickup_ShotSpeed(_ene->getPos(),ofRandom(-1,1)));
             break;
         case 4:
             pickups.push_back(new Pickup_FireRate(_ene->getPos(),ofRandom(-10,10)));
             break;
         default:
-            pickups.push_back(new Pickup_Speed(_ene->getPos(),ofRandom(-3,3)));
+            pickups.push_back(new Pickup_Speed(_ene->getPos(),ofRandom(-1,1)));
             break;
     }
 }
@@ -142,6 +142,11 @@ bool Room::checkEmpty(){
         return true;
     }
     return false;
+}
+
+//Empty by default
+void Room::generateEnemies(){
+    
 }
 
 Room::~Room(){

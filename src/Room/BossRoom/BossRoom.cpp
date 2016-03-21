@@ -45,4 +45,61 @@ void BossRoom::subGenerateRoom(){
             }
         }
     }
+    generateEnemies();
+}
+
+void BossRoom::generateEnemies(){
+    int randomNum = floor(ofRandom(0,3));
+    switch (randomNum) {
+        case 0:
+            enemies.push_back(new Enemy_Guy(ofVec2f(225,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(325,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(425,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(525,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(625,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(725,400)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(425,200)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(425,300)));
+            enemies.push_back(new Enemy_Guy(ofVec2f(425,500)));
+            break;
+        case 1:
+            enemies.push_back(new Enemy_Pop(ofVec2f(150,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(200,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(300,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(400,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(500,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(600,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(700,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(250,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(350,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(450,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(550,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(650,375)));
+            break;
+        case 2:
+            enemies.push_back(new Enemy_Pop(ofVec2f(150,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(200,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(300,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(400,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(500,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(600,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(700,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(250,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(350,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(450,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(550,375)));
+            enemies.push_back(new Enemy_Pop(ofVec2f(650,375)));
+            
+            enemies.push_back(new Enemy_Whizz(ofVec2f(150,175)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(200,225)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(300,275)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(400,325)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(500,375)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(600,425)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(700,475)));
+            enemies.push_back(new Enemy_Whizz(ofVec2f(250,525)));
+            break;
+        default:
+            break;
+    }
 }
