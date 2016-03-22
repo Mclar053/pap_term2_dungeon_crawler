@@ -53,7 +53,7 @@ protected:
     virtual void generateEnemies(); //Generates enemies
     
 public:
-    Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
+    Room(bool _fight=true, GridPos _fPos=GridPos(0,0), bool _left=false,bool _up=false, bool _right=false, bool _down=false);
     
     void generateRoom(); //Generates the room
     virtual void subGenerateRoom()=0; //Pure Virtual Function used to allow other room types to generate their own type of room. E.g. Boss room and Normal Room

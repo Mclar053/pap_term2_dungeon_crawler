@@ -18,8 +18,8 @@ public:
     NormalRoom();
     NormalRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
     
-    virtual void subGenerateRoom();
-    void generateEnemies();
+    virtual void subGenerateRoom(); //Generates this room
+    void generateEnemies(); //Generates random set of enemies
 };
 
 #endif /* defined(__dungeon_crawler__NormalRoom__) */

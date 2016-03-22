@@ -8,7 +8,7 @@
 
 #include "BossRoom.h"
 
-BossRoom::BossRoom():Room(true){
+BossRoom::BossRoom(){
     
 }
 
@@ -17,27 +17,11 @@ BossRoom::BossRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right,
     checkOpenDoors();
 }
 
-//void BossRoom::display(){
-//    for(int i=0; i<grid[0].size(); i++){
-//        for(int j=0; j<grid.size(); j++){
-//            glPushMatrix();
-//            glTranslated(50+i*25,150+j*25, 0);
-//            ofPushStyle();
-//            ofSetColor(0, 255, 255); //Cyan
-//            ofDrawRectangle(0,0,25,25);
-//            ofPopStyle();
-//            glPopMatrix();
-//        }
-//    }
-//    for(auto _door: doors){
-//        _door->display();
-//    }
-//}
-
 void BossRoom::subGenerateRoom(){
+    //Adds Boss floor to cover the floor and the trap door to cover 1 space to let player to next floor
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
-            if(i==floor(grid[0].size()/2) && j==3){
+            if(i==floor(grid[0].size()/2-1) && j==3){
                 tiles.push_back(new Trapdoor(ofVec2f(62.5+i*25, 162.5+j*25)));
             }
             else{
@@ -45,13 +29,15 @@ void BossRoom::subGenerateRoom(){
             }
         }
     }
+    //Generate enemies
     generateEnemies();
 }
 
 void BossRoom::generateEnemies(){
+    //Generates random number from 0-2
     int randomNum = floor(ofRandom(0,3));
     switch (randomNum) {
-        case 0:
+        case 0: //Creates 9 Guy enemies
             enemies.push_back(new Enemy_Guy(ofVec2f(225,400)));
             enemies.push_back(new Enemy_Guy(ofVec2f(325,400)));
             enemies.push_back(new Enemy_Guy(ofVec2f(425,400)));
@@ -62,7 +48,7 @@ void BossRoom::generateEnemies(){
             enemies.push_back(new Enemy_Guy(ofVec2f(425,300)));
             enemies.push_back(new Enemy_Guy(ofVec2f(425,500)));
             break;
-        case 1:
+        case 1: //Creates 12 Pop enemies
             enemies.push_back(new Enemy_Pop(ofVec2f(150,375)));
             enemies.push_back(new Enemy_Pop(ofVec2f(200,375)));
             enemies.push_back(new Enemy_Pop(ofVec2f(300,375)));
@@ -76,7 +62,7 @@ void BossRoom::generateEnemies(){
             enemies.push_back(new Enemy_Pop(ofVec2f(550,375)));
             enemies.push_back(new Enemy_Pop(ofVec2f(650,375)));
             break;
-        case 2:
+        case 2: //Creates 12 Pop and 8 Whizz enemies
             enemies.push_back(new Enemy_Pop(ofVec2f(150,375)));
             enemies.push_back(new Enemy_Pop(ofVec2f(200,375)));
             enemies.push_back(new Enemy_Pop(ofVec2f(300,375)));

@@ -6,6 +6,8 @@
 //
 //
 
+//Currently does not differ from Item room
+
 #include "ShopRoom.h"
 
 ShopRoom::ShopRoom():Room(false){
@@ -17,24 +19,8 @@ ShopRoom::ShopRoom(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right,
     checkOpenDoors();
 }
 
-//void ShopRoom::display(){
-//    for(int i=0; i<grid[0].size(); i++){
-//        for(int j=0; j<grid.size(); j++){
-//            glPushMatrix();
-//            glTranslated(50+i*25,150+j*25, 0);
-//            ofPushStyle();
-//            ofSetColor(255, 0, 255); //Magenta
-//            ofDrawRectangle(0,0,25,25);
-//            ofPopStyle();
-//            glPopMatrix();
-//        }
-//    }
-//    for(auto _door: doors){
-//        _door->display();
-//    }
-//}
-
 void ShopRoom::subGenerateRoom(){
+    //Adds normal floor tiles to cover the floor of the room
     for(int i=0; i<grid[0].size(); i++){
         for(int j=0; j<grid.size(); j++){
             tiles.push_back(new FloorTile(ofVec2f(62.5+i*25, 162.5+j*25)));
