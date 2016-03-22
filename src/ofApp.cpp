@@ -8,267 +8,302 @@ void ofApp::setup(){
     font = new ofTrueTypeFont();
     font->load(OF_TTF_SANS, 18);
     loadImages();
-    lvl =1;
-    player = new Player(ofVec2f(300,300));
-    floor = new Floor(lvl);
-    currentRoom = floor->getRoom();
-    grid = floor->getGrid();
     size = 7;
-    shootLeft = false;
-    shootRight = false;
-    shootUp = false;
-    shootDown = false;
-    nextFloor = false;
+    gameState = 0;
+    reset();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    player->move();
-    
-    if(shootLeft){
-        if(player->fire()){
-            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(), player->getDamage());
-            bullets.push_back(new_bullet);
-            new_bullet->moveLeft();
-            new_bullet = nullptr;
-        }
-    }
-    if(shootRight){
-        if(player->fire()){
-            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
-            bullets.push_back(new_bullet);
-            new_bullet->moveRight();
-            new_bullet = nullptr;
-        }
-    }
-    if(shootUp){
-        if(player->fire()){
-            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
-            bullets.push_back(new_bullet);
-            new_bullet->moveUp();
-            new_bullet = nullptr;
-        }
-    }
-    if(shootDown){
-        if(player->fire()){
-            Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
-            bullets.push_back(new_bullet);
-            new_bullet->moveDown();
-            new_bullet = nullptr;
-        }
-    }
-    
-    
-    vector<Door*> doors = currentRoom->getDoors();
-    vector<Enemy*> enemies = currentRoom->getEnemies();
-    vector<Pickup*> pickups = currentRoom->getPickups();
-    vector<Tile*> tiles = currentRoom->getTiles();
-    for(auto _proj: bullets){
-        _proj->move();
-        if(_proj->edgeDetect()){
-            _proj->die();
-        }
-    }
-    for(auto &_ene: enemies){
-        _ene->moveNextPattern();
-        _ene->movePattern();
-        _ene->move();
-        if(_ene->collide(player)){
-            _ene->collisionResponse(player);
-        }
-        for(auto _proj: bullets){
-            if(_ene->collide(_proj)){
-                _ene->collisionResponse(_proj);
-                _proj->collisionResponse(_ene);
-            }
-        }
-    }
-    
-    for(auto &_pu: pickups){
-        if(_pu->collide(player)){
-            _pu->collisionResponse(player);
-        }
-    }
-    
-    if(currentRoom->checkEmpty()){
-        for(auto &_door: doors){
-            if(_door->collideLeft(player)){
-                killBullets();
-                player->setPos(ofVec2f(75,375));
-                floor->moveRoom(GridPos(0,1));
-                currentRoom = floor->getRoom();
-                cout<<"left"<<endl;
-            }
-            if(_door->collideRight(player)){
-                killBullets();
-                player->setPos(ofVec2f(725,375));
-                floor->moveRoom(GridPos(0,-1));
-                currentRoom = floor->getRoom();
-                cout<<"right"<<endl;
-            }
-            if(_door->collideTop(player)){
-                killBullets();
-                player->setPos(ofVec2f(400,175));
-                floor->moveRoom(GridPos(1,0));
-                currentRoom = floor->getRoom();
-                cout<<"top"<<endl;
-            }
-            if(_door->collideBottom(player)){
-                killBullets();
-                player->setPos(ofVec2f(400,575));
-                floor->moveRoom(GridPos(-1,0));
-                currentRoom = floor->getRoom();
-                cout<<"bottom"<<endl;
-            }
-        }
-        
-        for(auto &_tile: tiles){
-            Trapdoor* _trapdoor = dynamic_cast<Trapdoor*>(_tile);
-            if(_trapdoor){
-                cout<<"trap"<<endl;
-                if(_trapdoor->collide(player)){
-                    cout<<"trapCollide"<<endl;
-                    nextFloor = true;
+    switch(gameState){
+        case 1:
+            player->move();
+            
+            if(shootLeft){
+                if(player->fire()){
+                    Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(), player->getDamage());
+                    bullets.push_back(new_bullet);
+                    new_bullet->moveLeft();
+                    new_bullet = nullptr;
                 }
             }
-        }
-    }
-    
-    checkDead();
-    currentRoom->checkDead();
-    
-    //Move to next floor
-    if(nextFloor){
-        lvl++;
-        delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-        floor = new Floor(lvl);
-        currentRoom = floor->getRoom();
-        grid = floor->getGrid();
-        nextFloor = false;
+            if(shootRight){
+                if(player->fire()){
+                    Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+                    bullets.push_back(new_bullet);
+                    new_bullet->moveRight();
+                    new_bullet = nullptr;
+                }
+            }
+            if(shootUp){
+                if(player->fire()){
+                    Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+                    bullets.push_back(new_bullet);
+                    new_bullet->moveUp();
+                    new_bullet = nullptr;
+                }
+            }
+            if(shootDown){
+                if(player->fire()){
+                    Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(),player->getDamage());
+                    bullets.push_back(new_bullet);
+                    new_bullet->moveDown();
+                    new_bullet = nullptr;
+                }
+            }
+            
+            
+            vector<Door*> doors = currentRoom->getDoors();
+            vector<Enemy*> enemies = currentRoom->getEnemies();
+            vector<Pickup*> pickups = currentRoom->getPickups();
+            vector<Tile*> tiles = currentRoom->getTiles();
+            for(auto _proj: bullets){
+                _proj->move();
+                if(_proj->edgeDetect()){
+                    _proj->die();
+                }
+            }
+            for(auto &_ene: enemies){
+                _ene->moveNextPattern();
+                _ene->movePattern();
+                _ene->move();
+                if(_ene->collide(player)){
+                    _ene->collisionResponse(player);
+                }
+                for(auto _proj: bullets){
+                    if(_ene->collide(_proj)){
+                        _ene->collisionResponse(_proj);
+                        _proj->collisionResponse(_ene);
+                    }
+                }
+            }
+            
+            for(auto &_pu: pickups){
+                if(_pu->collide(player)){
+                    _pu->collisionResponse(player);
+                }
+            }
+            
+            if(currentRoom->checkEmpty()){
+                for(auto &_door: doors){
+                    if(_door->collideLeft(player)){
+                        killBullets();
+                        player->setPos(ofVec2f(75,375));
+                        floor->moveRoom(GridPos(0,1));
+                        currentRoom = floor->getRoom();
+                        cout<<"left"<<endl;
+                    }
+                    if(_door->collideRight(player)){
+                        killBullets();
+                        player->setPos(ofVec2f(725,375));
+                        floor->moveRoom(GridPos(0,-1));
+                        currentRoom = floor->getRoom();
+                        cout<<"right"<<endl;
+                    }
+                    if(_door->collideTop(player)){
+                        killBullets();
+                        player->setPos(ofVec2f(400,175));
+                        floor->moveRoom(GridPos(1,0));
+                        currentRoom = floor->getRoom();
+                        cout<<"top"<<endl;
+                    }
+                    if(_door->collideBottom(player)){
+                        killBullets();
+                        player->setPos(ofVec2f(400,575));
+                        floor->moveRoom(GridPos(-1,0));
+                        currentRoom = floor->getRoom();
+                        cout<<"bottom"<<endl;
+                    }
+                }
+                
+                for(auto &_tile: tiles){
+                    Trapdoor* _trapdoor = dynamic_cast<Trapdoor*>(_tile);
+                    if(_trapdoor){
+                        cout<<"trap"<<endl;
+                        if(_trapdoor->collide(player)){
+                            cout<<"trapCollide"<<endl;
+                            nextFloor = true;
+                        }
+                    }
+                }
+            }
+            
+            checkDead();
+            currentRoom->checkDead();
+            
+            //Move to next floor
+            if(nextFloor){
+                lvl++;
+                delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
+                floor = new Floor(lvl);
+                currentRoom = floor->getRoom();
+                grid = floor->getGrid();
+                nextFloor = false;
+            }
+
+            break;
     }
 //    cout<<currentRoom->getFloorPos().x<<" "<<currentRoom->getFloorPos().y<<endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(120, 82, 53);
-    
-    //Display all game objects
-    currentRoom->display();
-    for(auto _proj: bullets){
-        _proj->display();
-    }
-    player->display();
-    
-    
-    //Draw all player information
-    //Background - Black
-    ofPushStyle();
-        ofSetColor(0);
-        ofDrawRectangle(0, 0, ofGetWidth(), 100);
-    ofPopStyle();
-    
-    //Player stats
-    ofPushStyle();
-        ofSetColor(255);
-        font->drawString("Health:", 150, 40);
-        font->drawString("Damage: "+to_string(player->getDamage()), 450, 20);
-    font->drawString("Fire Rate: "+to_string(100/player->getFireRate()), 450, 40);
-    font->drawString("Speed: "+to_string(player->getMaxSpeed()), 450, 60);
-    font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
-    font->drawString("Floor: "+to_string(lvl), 150, 70);
-    ofPopStyle();
-    
-    //Player Health bar
-    ofPushMatrix();
-        ofTranslate(225, 20);
-        ofPushStyle();
-        ofSetColor(255, 0, 0);
-            ofDrawRectangle(0, 0, 200, 20);
-        ofPopStyle();
-    
-        ofPushStyle();
-            ofSetColor(0, 255, 0);
-            ofDrawRectangle(0, 0, (200*player->getHealth()/player->getMaxHealth()), 20);
-        ofPopStyle();
-    ofPopMatrix();
-    
-    //Floor map
-    glPushMatrix();
-    glTranslated(10, 5, 0);
-    for(int i=0; i<grid[0].size(); i++){
-        for(int j=0; j<grid.size(); j++){
-            switch (grid[j][i]) {
-                case 0:
-                    break;
-                default:
-                    ofPushStyle();
-                    ofSetColor(0);
-                    ofNoFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    
-                    ofPushStyle();
-                    ofSetColor(255);
-                    ofFill();
-                    ofDrawRectangle(i*size, j*size, size, size);
-                    ofPopStyle();
-                    break;
+    switch(gameState){
+        case 1: //Main game
+            ofBackground(120, 82, 53);
+            
+            //Display all game objects
+            currentRoom->display();
+            for(auto _proj: bullets){
+                _proj->display();
             }
-        }
+            player->display();
+            
+            
+            //Draw all player information
+            //Background - Black
+            ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(0, 0, ofGetWidth(), 100);
+            ofPopStyle();
+            
+            //Player stats
+            ofPushStyle();
+                ofSetColor(255);
+                font->drawString("Health:", 150, 40);
+                font->drawString("Damage: "+to_string(player->getDamage()), 450, 20);
+            font->drawString("Fire Rate: "+to_string(100/player->getFireRate()), 450, 40);
+            font->drawString("Speed: "+to_string(player->getMaxSpeed()), 450, 60);
+            font->drawString("Shot Speed: "+to_string(player->getShotSpeed()), 450, 80);
+            font->drawString("Floor: "+to_string(lvl), 150, 70);
+            ofPopStyle();
+            
+            //Player Health bar
+            ofPushMatrix();
+                ofTranslate(225, 20);
+                ofPushStyle();
+                ofSetColor(255, 0, 0);
+                    ofDrawRectangle(0, 0, 200, 20);
+                ofPopStyle();
+            
+                ofPushStyle();
+                    ofSetColor(0, 255, 0);
+                    ofDrawRectangle(0, 0, (200*player->getHealth()/player->getMaxHealth()), 20);
+                ofPopStyle();
+            ofPopMatrix();
+            
+            //Floor map
+            glPushMatrix();
+            glTranslated(10, 5, 0);
+            for(int i=0; i<grid[0].size(); i++){
+                for(int j=0; j<grid.size(); j++){
+                    switch (grid[j][i]) {
+                        case 0:
+                            break;
+                        default:
+                            ofPushStyle();
+                            ofSetColor(0);
+                            ofNoFill();
+                            ofDrawRectangle(i*size, j*size, size, size);
+                            ofPopStyle();
+                            
+                            ofPushStyle();
+                            ofSetColor(255);
+                            ofFill();
+                            ofDrawRectangle(i*size, j*size, size, size);
+                            ofPopStyle();
+                            break;
+                    }
+                }
+            }
+            glPopMatrix();
+            break;
+        case 2: //Game Over
+            ofBackground(0);
+            font->drawString("Game Over", 30, ofGetHeight()/2);
+            font->drawString("Press 'Space' to return to Main Menu", 30, ofGetHeight()/2+30);
+            break;
+        default: //Main menu
+            ofBackground(0);
+            font->drawString("Dungeon Crawler Game", 30, 20);
+            font->drawString("Press 'Space' to start playing", 30, ofGetHeight()-30);
+            font->drawString("Controls", 30, 50);
+            font->drawString("w: Move up", 30, 80);
+            font->drawString("a: Move left", 30, 100);
+            font->drawString("s: Move down", 30, 120);
+            font->drawString("d: Move right", 30, 140);
+            font->drawString("Up Arrow: Shoot up", 30, 160);
+            font->drawString("Left Arrow: Shoot left", 30, 180);
+            font->drawString("Down Arrow: Shoot down", 30, 200);
+            font->drawString("Right Arrow: Shoot right", 30, 220);
+            font->drawString("Move through rooms to get to the boss room.", 30, ofGetHeight()/2);
+            font->drawString("Enter trap door in the boss room to get to next floor.", 30,ofGetHeight()/2+20);
     }
-    glPopMatrix();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key=='a'){
-        player->moveLeft();
+    switch(gameState){
+        case 1:
+            if(key=='a'){
+                player->moveLeft();
+            }
+            if(key=='d'){
+                player->moveRight();
+            }
+            if(key=='w'){
+                player->moveUp();
+            }
+            if(key=='s'){
+                player->moveDown();
+            }
+            
+            //Only lets the player shoot in 1 direction at any 1 time
+            if(!shootLeft && !shootRight && !shootUp && !shootDown){
+                if(key==OF_KEY_LEFT){
+                    shootLeft = true;
+                }
+                if(key==OF_KEY_RIGHT){
+                    shootRight = true;
+                }
+                if(key==OF_KEY_UP){
+                    shootUp = true;
+                }
+                if(key==OF_KEY_DOWN){
+                    shootDown = true;
+                }
+            }
+            
+            if(key=='.'){
+                lvl++;
+                delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
+                floor = new Floor(lvl);
+                currentRoom = floor->getRoom();
+                grid = floor->getGrid();
+            }
+            if(key==','){
+                lvl--;
+                delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
+                floor = new Floor(lvl);
+                currentRoom = floor->getRoom();
+                grid = floor->getGrid();
+            }
+            if(key=='l'){
+                currentRoom->checkDead();
+            }
+            break;
+        case 2:
+            if(key==' '){
+                gameState = 0;
+            }
+            break;
+        default:
+            if(key==' '){
+                gameState = 1;
+            }
+            break;
     }
-    if(key=='d'){
-        player->moveRight();
-    }
-    if(key=='w'){
-        player->moveUp();
-    }
-    if(key=='s'){
-        player->moveDown();
-    }
-    
-    //Only lets the player shoot in 1 direction at any 1 time
-    if(!shootLeft && !shootRight && !shootUp && !shootDown){
-        if(key==OF_KEY_LEFT){
-            shootLeft = true;
-        }
-        if(key==OF_KEY_RIGHT){
-            shootRight = true;
-        }
-        if(key==OF_KEY_UP){
-            shootUp = true;
-        }
-        if(key==OF_KEY_DOWN){
-            shootDown = true;
-        }
-    }
-    
-    if(key=='.'){
-        lvl++;
-        delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-        floor = new Floor(lvl);
-        currentRoom = floor->getRoom();
-        grid = floor->getGrid();
-    }
-    if(key==','){
-        lvl--;
-        delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-        floor = new Floor(lvl);
-        currentRoom = floor->getRoom();
-        grid = floor->getGrid();
-    }
-    if(key=='l'){
-        currentRoom->checkDead();
-    }
-//    cout<<lvl<<endl;
+    //    cout<<lvl<<endl;
 }
 
 //--------------------------------------------------------------
@@ -363,6 +398,11 @@ void ofApp::checkDead(){
         }
     }
     bullets.erase(it, bullets.end());
+    
+    if(!player->isAlive()){
+        gameState = 2;
+        reset();
+    }
 }
 
 void ofApp::killBullets(){
@@ -371,6 +411,18 @@ void ofApp::killBullets(){
     }
 }
 
+void ofApp::reset(){
+    lvl =1;
+    player = new Player(ofVec2f(300,300));
+    floor = new Floor(lvl);
+    currentRoom = floor->getRoom();
+    grid = floor->getGrid();
+    shootLeft = false;
+    shootRight = false;
+    shootUp = false;
+    shootDown = false;
+    nextFloor = false;
+}
 
 
 

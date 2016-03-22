@@ -8,7 +8,7 @@
 
 #include "Player.h"
 //1,30,5,0
-Player::Player(ofVec2f _pos):Entity(_pos,3,20,45),damage(20),fireRate(1),shotSpeed(5),lastFireFrame(0){
+Player::Player(ofVec2f _pos):Entity(_pos,3,20,45),damage(3),fireRate(25),shotSpeed(5),lastFireFrame(0){
     gameSprite = Sprite("player", 16, 0, 7, 0, 7, 8, 15);
     addHealth(20);
 }

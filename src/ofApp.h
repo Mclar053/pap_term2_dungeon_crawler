@@ -31,6 +31,8 @@ class ofApp : public ofBaseApp{
         void checkDead(); //Checks if projectiles are 'dead' if so then delete object and remove pointer
         void killBullets();
     
+        void reset(); //Resets the whole game
+    
         Floor* floor;
         Room* currentRoom;
         vector<vector<int>> grid, grid2;
@@ -38,6 +40,8 @@ class ofApp : public ofBaseApp{
         int size;
         Player* player;
         bool nextFloor;
+    
+        int gameState;
     
         bool shootLeft, shootRight, shootUp, shootDown;
     
