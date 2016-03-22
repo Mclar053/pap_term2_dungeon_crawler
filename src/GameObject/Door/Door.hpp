@@ -14,14 +14,14 @@
 #include "../Entity/Player/Player.h"
 
 class Door: public GameObject{
-    float rotation;
-    bool open;
+    float rotation; //Rotation of the door so it looks right on the screen
+    bool open; //Checks if the door is open or not
     
 public:
     Door(ofVec2f _pos, int _direction);
-    void calcRotation(int _dir);
-    void subDisplay();
-    bool checkOpen();
+    void calcRotation(int _dir); //Calculates a rotation based on the direction of the door
+    void subDisplay(); //Displays the door
+    bool checkOpen(); //Returns if the door is open or not
     
 };
 

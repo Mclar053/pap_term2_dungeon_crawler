@@ -115,28 +115,24 @@ void ofApp::update(){
                         player->setPos(ofVec2f(75,375));
                         floor->moveRoom(GridPos(0,1));
                         currentRoom = floor->getRoom();
-                        cout<<"left"<<endl;
                     }
                     if(_door->collideRight(player)){
                         killBullets();
                         player->setPos(ofVec2f(725,375));
                         floor->moveRoom(GridPos(0,-1));
                         currentRoom = floor->getRoom();
-                        cout<<"right"<<endl;
                     }
                     if(_door->collideTop(player)){
                         killBullets();
                         player->setPos(ofVec2f(400,175));
                         floor->moveRoom(GridPos(1,0));
                         currentRoom = floor->getRoom();
-                        cout<<"top"<<endl;
                     }
                     if(_door->collideBottom(player)){
                         killBullets();
                         player->setPos(ofVec2f(400,575));
                         floor->moveRoom(GridPos(-1,0));
                         currentRoom = floor->getRoom();
-                        cout<<"bottom"<<endl;
                     }
                 }
                 
@@ -151,17 +147,18 @@ void ofApp::update(){
                 }
             }
             
+            //Check for dead objects
             checkDead();
             currentRoom->checkDead();
             
             //Move to next floor
             if(nextFloor){
-                lvl++;
+                lvl++; //Adds 1 to the floor level
                 delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-                floor = new Floor(lvl);
-                currentRoom = floor->getRoom();
-                grid = floor->getGrid();
-                nextFloor = false;
+                floor = new Floor(lvl); //Creates a new floor
+                currentRoom = floor->getRoom(); //Gets the current room
+                grid = floor->getGrid(); //Gets the grid for the floor
+                nextFloor = false; //Set next floor the false
             }
 
             break;

@@ -16,11 +16,11 @@ void Entity::subDisplay(){
     glScalef(direction, 1, 1);
     
     gameSprite.display();
-    if(moving){
-        gameSprite.moveNextFrame(spriteStart,spriteEnd);
+    if(moving){ //Checks if entity is moving
+        gameSprite.moveNextFrame(spriteStart,spriteEnd); //Moves to next frame within the sprite start and end
     }
     else{
-        gameSprite.setCurrentFrame(spriteStart);
+        gameSprite.setCurrentFrame(spriteStart);//Set frame to start frame of animation
     }
 }
 
@@ -65,6 +65,7 @@ void Entity::move(){
     }
 }
 
+//Reduces the speed of the entity to 0
 float Entity::friction(float _vel){
     if(_vel>0.2) _vel-=0.1;
     else if(_vel<-0.2) _vel+=0.1;
@@ -72,10 +73,12 @@ float Entity::friction(float _vel){
     return _vel;
 }
 
+//Returns the max velocity * normalised speed
 float Entity::speedControl(float _ratio){
     return MAX_VEL*_ratio;
 }
 
+//Normalises the speed of the entity
 void Entity::normaliseMaxSpeed(){
     if(vel.length()>MAX_VEL){
         ofVec2f ratio = vel;
@@ -85,6 +88,7 @@ void Entity::normaliseMaxSpeed(){
     }
 }
 
+//Checks if the entity has hit the walls
 bool Entity::edgeDetect(){
     if(pos.x+vel.x-getSize().x/2<48 || pos.x+vel.x+getSize().x/2>752 || pos.y+vel.y-getSize().y/2<148 || pos.y+vel.y+getSize().y/2>602){
         return true;
@@ -124,6 +128,7 @@ void Entity::stopDown(){
     down = false;
 }
 
+//Checks if the entity is moving
 bool Entity::checkMoving(){
     if(left || right || up || down){
         return true;
@@ -131,6 +136,7 @@ bool Entity::checkMoving(){
     return false;
 }
 
+//Resets all movement of the entity
 void Entity::reset(){
     acc.set(0,0);
     left=false;

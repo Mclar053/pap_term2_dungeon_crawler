@@ -22,6 +22,7 @@ void GameObject::display(){
     glPopMatrix();
 }
 
+//Changes the sprite to another type (Used for the doors)
 void GameObject::changeSprite(string _filename){
     gameSprite = Sprite(_filename);
 }
@@ -79,6 +80,7 @@ bool GameObject::collideBottom(GameObject* other){
     return false;
 }
 
+//Checks if another game object has collided with any of the sides of the current game object
 bool GameObject::collide(GameObject* other){
     if(this->collideLeft(other) || this->collideRight(other) || this->collideTop(other) || this->collideBottom(other)){
         return true;
@@ -92,6 +94,7 @@ void GameObject::collisionResponse(GameObject *other)
     
 }
 
+//Sets dead to true
 void GameObject::die(){
     dead = true;
 }

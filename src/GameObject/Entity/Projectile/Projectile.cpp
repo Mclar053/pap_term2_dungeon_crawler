@@ -13,10 +13,12 @@ Projectile::Projectile(ofVec2f _pos, float _maxVel, float _damage):Entity(_pos,_
     gameSprite = Sprite("bullet");
 }
 
+//Collision Response damages enemies
 void Projectile::collisionResponse(GameObject* other){
+    //Tries to cast for an enemy type object
     Enemy* _ene = dynamic_cast<Enemy*>(other);
-    if(_ene){
-        _ene->takeDamage(damage);
-        this->die();
+    if(_ene){//Checks if the casted object is an enemy
+        _ene->takeDamage(damage);//Take damage from enemy
+        this->die();//Kill the current object
     }
 }

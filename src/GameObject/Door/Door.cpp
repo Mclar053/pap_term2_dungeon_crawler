@@ -14,10 +14,11 @@ Door::Door(ofVec2f _pos, int _direction):GameObject(_pos), open(true){
 }
 
 void Door::subDisplay(){
-    ofRotate(rotation);
-    gameSprite.display();
+    ofRotate(rotation); //Rotates the door by a set rotation
+    gameSprite.display(); //Displays the game object
 }
 
+//Calculates a rotation based on the direction of the door
 void Door::calcRotation(int _dir){
     rotation = ofMap(_dir,0,4,0,360);
 }

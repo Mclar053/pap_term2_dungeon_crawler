@@ -17,10 +17,9 @@
 class GameObject{
     
 protected:
-    Sprite gameSprite;
-    ofVec2f pos;
-    ofVec2f size;
-    bool dead;
+    Sprite gameSprite; //Game sprite
+    ofVec2f pos; //Position of the game object
+    bool dead; //Says if game object is dead or not
     
 public:
     GameObject();
@@ -43,6 +42,7 @@ public:
         return pos;
     }
     
+    //Sets the position of the game object
     void setPos(ofVec2f _pos){
         pos.set(_pos);
     }
@@ -53,6 +53,7 @@ public:
     //Sets dead bool to true
     virtual void die();
     
+    //Changes the sprite of the game object
     void changeSprite(string _fileName);
     
     //Checks if object is alive
