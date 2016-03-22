@@ -39,62 +39,58 @@ using namespace std;
 
 class Room{
 protected:
-    int sizeX, sizeY;
-    GridPos floorPos;
-    vector<vector<int>> grid;
-    vector<bool> roomAdjacency;
-    vector<Door*> doors;
-    vector<Tile*> tiles;
-    vector<Enemy*> enemies;
-    vector<Pickup*> pickups;
+    int sizeX, sizeY;//Size of the room (28,18)
+    GridPos floorPos; //Position of where the room is on the floor
+    vector<bool> roomAdjacency; //Vector of booleans which describes where to generate doors based on what rooms are next to the current room
+    vector<Door*> doors; //Vector of door object pointers
+    vector<Tile*> tiles; //Vector of tile object pointers
+    vector<Enemy*> enemies; //Vector of enemy object pointers
+    vector<Pickup*> pickups; //Vector of pickup object pointers
     
-    bool fighting;
-    
-    void addRandomPickup(Enemy* _ene);
+    void addRandomPickup(Enemy* _ene); //Adds random pickup from the position of where the enemy died
     void checkOpenDoors(); //Checks if the doors should look open
-    virtual void generateEnemies();
+    virtual void generateEnemies(); //Generates enemies
     
 public:
-    Room(bool _fight);
     Room(bool _fight, GridPos _fPos, bool _left,bool _up, bool _right, bool _down);
     
-    void generateRoom();
-    virtual void subGenerateRoom()=0;
-    bool checkEmpty();
-    virtual void display();
+    void generateRoom(); //Generates the room
+    virtual void subGenerateRoom()=0; //Pure Virtual Function used to allow other room types to generate their own type of room. E.g. Boss room and Normal Room
+    bool checkEmpty(); //Checks if all enemies in the room have died
+    virtual void display(); //Displays the room
     
     void checkDead(); //Checks if any gameobjects are dead and removes them from their respectibe vectors
     
-    vector<Door*> getDoors(){
+    vector<Door*> getDoors(){ //Returns the vector of door objects pointers
         return doors;
     };
     
-    vector<Enemy*> getEnemies(){
+    vector<Enemy*> getEnemies(){ //Returns the vector of enemy objects pointers
         return enemies;
     };
     
-    vector<Pickup*> getPickups(){
+    vector<Pickup*> getPickups(){ //Returns the vector of pickup objects pointers
         return pickups;
     };
     
-    vector<Tile*> getTiles(){
+    vector<Tile*> getTiles(){ //Returns the vector of tile objects pointers
         return tiles;
     };
     
-    GridPos getFloorPos(){
+    GridPos getFloorPos(){ //Returns the position of where on the floor the room is
         return floorPos;
     };
     
-    vector<bool> getA(){
+    vector<bool> getA(){ //Returns the roomAdjacency vector
         return roomAdjacency;
     };
     
-    ofVec2f getSize(){
+    ofVec2f getSize(){ //Returns the size of the room
         return ofVec2f(700,450);
     }
     
     
-    //Removes all doors and tiles when object is deleted
+    //Removes all doors, tiles and pickups when object is deleted
     virtual ~Room();
     
 };

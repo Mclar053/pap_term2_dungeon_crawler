@@ -399,21 +399,24 @@ void ofApp::mouseReleased(int x, int y, int button){
 void ofApp::checkDead(){
     //Reference: Marco Gilles - ShooterInheritence
     //Link: 
-    // remove all dead objects
-    // only do this after the two loops to avoid
-    // invalidated iterators
+    
+    //Checks what projectiles are 'Dead' and puts them to the end on the vector
     auto it = std::remove_if(bullets.begin(), bullets.end(),
                              [](Projectile *_proj){
                                  return !_proj->isAlive();
                              });
+    //Cycles through all the projectiles and checks if they are 'alive'
+    //If not then delete the object in dynamic memory and set the pointer to null
     for(auto _proj: bullets){
         if(!_proj->isAlive()){
             delete _proj;
             _proj = nullptr;
         }
     }
+    //Remove all projectiles that are 'dead'
     bullets.erase(it, bullets.end());
     
+    //If the player is not alive, set to game over state and reset the whole game
     if(!player->isAlive()){
         gameState = 2;
         reset();
