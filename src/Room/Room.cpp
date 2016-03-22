@@ -10,6 +10,9 @@
 
 Room::Room(bool _fight, GridPos _fPos ,bool _up,bool _right, bool _down, bool _left):sizeX(28),sizeY(18),floorPos(_fPos){
     
+    grid.resize(sizeY);
+    for(auto &_y: grid) _y.resize(sizeX);
+    
     //Pushes where doors should spawn in the room
     roomAdjacency.push_back(_up);
     roomAdjacency.push_back(_right);

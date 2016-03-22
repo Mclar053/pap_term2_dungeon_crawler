@@ -40,6 +40,7 @@ using namespace std;
 class Room{
 protected:
     int sizeX, sizeY;//Size of the room (28,18)
+    vector<vector<int>> grid;
     GridPos floorPos; //Position of where the room is on the floor
     vector<bool> roomAdjacency; //Vector of booleans which describes where to generate doors based on what rooms are next to the current room
     vector<Door*> doors; //Vector of door object pointers
