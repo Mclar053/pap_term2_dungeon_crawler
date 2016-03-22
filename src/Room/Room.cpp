@@ -48,6 +48,7 @@ void Room::display(){
 
 void Room::checkDead(){
     //Reference: Marco Gilles - ShooterInheritence
+    //Link: 
     // remove all dead objects
     // only do this after the two loops to avoid
     // invalidated iterators

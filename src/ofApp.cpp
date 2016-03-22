@@ -2,23 +2,32 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    //Load music and play on loop
     music.load("music/crawler2.mp3");
     music.setLoop(true);
     music.play();
+    
+    //Create font object in dynamic memory
     font = new ofTrueTypeFont();
     font->load(OF_TTF_SANS, 18);
+    
+    //Load all images used in game into the image manager
     loadImages();
+    
+    //set size of the map grid squares in the top left corner of the game screen
     size = 7;
-    gameState = 0;
-    reset();
+    gameState = 0; //Set gamestate to main menu
+    reset(); //Reset the whole game to start from the beginning
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     switch(gameState){
         case 1:
+            //Player movement
             player->move();
             
+            //Checks if the player can shoot and if so then create a projectile that moves in the direction that it is being fired in
             if(shootLeft){
                 if(player->fire()){
                     Projectile* new_bullet = new Projectile(player->getPos(), player->getShotSpeed(), player->getDamage());
@@ -53,16 +62,27 @@ void ofApp::update(){
             }
             
             
+            //Gets all the gameobjects from the current room object in dynamic memory
             vector<Door*> doors = currentRoom->getDoors();
             vector<Enemy*> enemies = currentRoom->getEnemies();
             vector<Pickup*> pickups = currentRoom->getPickups();
             vector<Tile*> tiles = currentRoom->getTiles();
+            
+            //Projectiles being looped through in order to move
+            //Projectiles checking if they have hit the edge of the room
+            //If so, then they die
             for(auto _proj: bullets){
                 _proj->move();
                 if(_proj->edgeDetect()){
                     _proj->die();
                 }
             }
+            
+            /*
+             -Loops through enemies to move each one and to check if they change their position in their movement pattern.
+             -Checks for a player-enemy collision and the enemy has a collision response on the player
+             -Checks for projectile-enemy collision and the projectile and the enemy have a collision reponse to each other
+             */
             for(auto &_ene: enemies){
                 _ene->moveNextPattern();
                 _ene->movePattern();
@@ -78,13 +98,17 @@ void ofApp::update(){
                 }
             }
             
+            //Player-Pickup collision
             for(auto &_pu: pickups){
                 if(_pu->collide(player)){
                     _pu->collisionResponse(player);
                 }
             }
             
+            //Checks if the room is empty of enemies
             if(currentRoom->checkEmpty()){
+                
+                //Player-door collision
                 for(auto &_door: doors){
                     if(_door->collideLeft(player)){
                         killBullets();
@@ -116,12 +140,11 @@ void ofApp::update(){
                     }
                 }
                 
+                //Checks for player-trapdoor collision
                 for(auto &_tile: tiles){
                     Trapdoor* _trapdoor = dynamic_cast<Trapdoor*>(_tile);
                     if(_trapdoor){
-                        cout<<"trap"<<endl;
                         if(_trapdoor->collide(player)){
-                            cout<<"trapCollide"<<endl;
                             nextFloor = true;
                         }
                     }
@@ -192,7 +215,7 @@ void ofApp::draw(){
                 ofPopStyle();
             ofPopMatrix();
             
-            //Floor map
+            //Draws the Floor map to the top left of the screen
             glPushMatrix();
             glTranslated(10, 5, 0);
             for(int i=0; i<grid[0].size(); i++){
@@ -244,7 +267,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch(gameState){
-        case 1:
+        case 1://Main game
+            //Player movement keys
             if(key=='a'){
                 player->moveLeft();
             }
@@ -273,64 +297,53 @@ void ofApp::keyPressed(int key){
                     shootDown = true;
                 }
             }
+            break;
             
-            if(key=='.'){
-                lvl++;
-                delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-                floor = new Floor(lvl);
-                currentRoom = floor->getRoom();
-                grid = floor->getGrid();
-            }
-            if(key==','){
-                lvl--;
-                delete floor; // Delete floor before creating new one to avoid memory leak. Avg memory = ~20MB
-                floor = new Floor(lvl);
-                currentRoom = floor->getRoom();
-                grid = floor->getGrid();
-            }
-            if(key=='l'){
-                currentRoom->checkDead();
+        case 2: //Game Over
+            if(key==' '){
+                gameState = 0; //Return to main menu
             }
             break;
-        case 2:
+            
+        default: //Main menu
             if(key==' '){
-                gameState = 0;
-            }
-            break;
-        default:
-            if(key==' '){
-                gameState = 1;
+                gameState = 1; //Change state to main game
             }
             break;
     }
-    //    cout<<lvl<<endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if(key=='a'){
-        player->stopLeft();
-    }
-    if(key=='d'){
-        player->stopRight();
-    }
-    if(key=='w'){
-        player->stopUp();
-    }
-    if(key=='s'){
-        player->stopDown();
-    }
-    if(key==OF_KEY_LEFT){
-        shootLeft = false;
-    }
-    if(key==OF_KEY_RIGHT){
-        shootRight = false;
-    }
-    if(key==OF_KEY_UP){
-        shootUp = false;
-    }
-    if(key==OF_KEY_DOWN){
-        shootDown = false;
+    switch(gameState){
+        case 1: //Main game
+            if(key=='a'){
+                player->stopLeft();
+            }
+            if(key=='d'){
+                player->stopRight();
+            }
+            if(key=='w'){
+                player->stopUp();
+            }
+            if(key=='s'){
+                player->stopDown();
+            }
+            if(key==OF_KEY_LEFT){
+                shootLeft = false;
+            }
+            if(key==OF_KEY_RIGHT){
+                shootRight = false;
+            }
+            if(key==OF_KEY_UP){
+                shootUp = false;
+            }
+            if(key==OF_KEY_DOWN){
+                shootDown = false;
+            }
+            break;
+        default: //Any other screen doesn't utilise the keyReleased function
+            break;
     }
 
 }
@@ -382,8 +395,10 @@ void ofApp::mouseReleased(int x, int y, int button){
      }
  };
 
+//Removes all objects that are set to 'Dead'
 void ofApp::checkDead(){
     //Reference: Marco Gilles - ShooterInheritence
+    //Link: 
     // remove all dead objects
     // only do this after the two loops to avoid
     // invalidated iterators
@@ -405,6 +420,7 @@ void ofApp::checkDead(){
     }
 }
 
+//Sets all the bullets to die
 void ofApp::killBullets(){
     for(auto _proj: bullets){
         _proj->die();
