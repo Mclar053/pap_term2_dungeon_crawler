@@ -12,6 +12,7 @@ Tile::Tile(ofVec2f _pos):GameObject(_pos){
     
 }
 
+//Display game sprite
 void Tile::subDisplay(){
     gameSprite.display();
 }
